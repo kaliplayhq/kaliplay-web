@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, CircuitBoard, Flame, Radar, ShieldCheck, ShoppingCart, Sparkles } from "lucide-react";
+import { BadgeCheck, CircuitBoard, Flame, KeyRound, PackageCheck, Play, Radar, ShieldCheck, ShoppingCart, Sparkles, Ticket } from "lucide-react";
 import { useState } from "react";
+import { LogoMark } from "@/components/LogoMark";
 import { SiteFrame } from "@/components/SiteFrame";
 import type { HomeCopy, Locale } from "@/i18n";
 
@@ -14,6 +15,13 @@ type HomePageProps = {
 
 export function HomePage({ locale, copy }: HomePageProps) {
   const [spot, setSpot] = useState({ x: "54%", y: "30%" });
+  const assetCards = [
+    { icon: Play, title: "Play-ready", body: "digital goods" },
+    { icon: KeyRound, title: "Keys", body: "documented origin" },
+    { icon: Ticket, title: "Perks", body: "redeemable assets" },
+    { icon: PackageCheck, title: "Licenses", body: "clear rules" },
+    { icon: ShieldCheck, title: "Risk", body: "reviewed supply" }
+  ];
 
   return (
     <SiteFrame locale={locale} copy={copy}>
@@ -30,28 +38,32 @@ export function HomePage({ locale, copy }: HomePageProps) {
       >
         <div className="absolute inset-0 -z-20">
           <Image
-            src="/hero-digital-assets.png"
+            src="/hero-digital-assets-v2.png"
             alt="Premium digital assets marketplace visual"
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-85"
+            className="object-cover opacity-95"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0.88)_34%,rgba(0,0,0,0.22)_72%,#000_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_66%_42%,transparent_0,rgba(0,0,0,0.62)_62%,#000_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.18)_0%,rgba(0,0,0,0.24)_48%,rgba(0,0,0,0.78)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.32)_60%,rgba(0,0,0,0.62)_100%)]" />
         </div>
 
-        <div className="mx-auto max-w-7xl">
-          <div className="reveal relative z-10 max-w-3xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-ember/70 bg-ember/10 px-3 py-2 text-sm font-black uppercase text-flare shadow-glow">
+        <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl items-center justify-center text-center">
+          <div className="reveal relative z-10 mx-auto max-w-5xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-ember/70 bg-black/35 px-3 py-2 text-sm font-black uppercase text-flare shadow-glow backdrop-blur-md">
               <Flame size={16} />
               {copy.hero.eyebrow}
             </div>
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.06em] text-bone sm:text-7xl lg:text-8xl">
-              {copy.hero.title}
+            <LogoMark className="mx-auto mb-5 h-20 w-20 sm:h-24 sm:w-24" />
+            <h1 className="hero-brand text-6xl font-semibold leading-[0.86] tracking-[-0.08em] text-bone sm:text-8xl lg:text-[9.5rem]">
+              Kaliplay
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-bone/78 sm:text-xl">{copy.hero.body}</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-bone sm:text-5xl">
+              {copy.hero.title}
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-bone/86 sm:text-xl">{copy.hero.body}</p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href={`/${locale}/store`}
                 className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-6 py-4 text-sm font-black uppercase text-blacktop shadow-glow transition hover:scale-[1.02] hover:bg-flare"
@@ -71,27 +83,23 @@ export function HomePage({ locale, copy }: HomePageProps) {
         </div>
       </section>
 
-      <section className="relative z-10 -mt-10 overflow-hidden border-y border-white/10 bg-black/60 py-4">
-        <div className="marquee-track flex w-max gap-3">
-          {[...copy.marquee, ...copy.marquee].map((item, index) => (
-            <span
-              key={`${item}-${index}`}
-              className="rounded-[8px] border border-ember/40 bg-ember/10 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-flare shadow-glow"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative z-10 px-4 py-8 sm:px-6">
-        <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-3">
-          {copy.stats.map((stat) => (
-            <div key={stat.label} className="rounded-[8px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
-              <div className="text-4xl font-black text-flare">{stat.value}</div>
-              <div className="mt-2 text-sm font-semibold text-bone/60">{stat.label}</div>
-            </div>
-          ))}
+      <section className="relative z-10 overflow-hidden border-y border-white/10 bg-black/35 py-8 backdrop-blur-md">
+        <div className="deck-track flex w-max gap-5 px-5">
+          {assetCards.concat(assetCards).map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <div key={`${card.title}-${index}`} className="asset-card group">
+                <div className="flex items-center justify-between">
+                  <Icon className="text-flare transition group-hover:scale-110 group-hover:text-pulse" size={28} />
+                  <span className="play-chip">
+                    <Play size={14} fill="currentColor" />
+                  </span>
+                </div>
+                <div className="mt-8 text-2xl font-semibold tracking-[-0.04em] text-bone">{card.title}</div>
+                <div className="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-bone/50">{card.body}</div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -129,7 +137,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
       </section>
 
       <section className="relative z-10 overflow-hidden py-12">
-        <div className="carousel-reverse flex w-max gap-4 px-4">
+        <div className="process-track flex w-max gap-4 px-4">
           {copy.flow.concat(copy.flow).map((item, index) => (
             <div key={`${item.step}-${index}`} className="w-72 rounded-[8px] border border-pulse/30 bg-pulse/10 p-5 shadow-cyan">
               <div className="mb-8 text-xs font-black text-pulse">{item.step}</div>

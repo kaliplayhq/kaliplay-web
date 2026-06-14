@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import { LogoMark } from "@/components/LogoMark";
 import { languages, locales, pageSlugs, type HomeCopy, type Locale } from "@/i18n";
 
 type SiteFrameProps = {
@@ -27,9 +27,7 @@ export function SiteFrame({ locale, copy, children }: SiteFrameProps) {
       <header className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-blacktop/70 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <Link href={`/${locale}`} className="group flex items-center gap-3" aria-label="Kaliplay home">
-            <span className="relative h-11 w-11 overflow-hidden rounded-[8px] border border-ember/80 bg-black shadow-glow">
-              <Image src="/kaliplay-logo-gamer.png" alt="" fill sizes="44px" className="object-cover" />
-            </span>
+            <LogoMark className="h-11 w-11" />
             <span className="text-lg font-semibold tracking-[-0.02em] text-bone">Kaliplay</span>
           </Link>
 
