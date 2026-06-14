@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, CircuitBoard, Flame, Radar, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, CircuitBoard, Flame, Radar, ShieldCheck, ShoppingCart, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { SiteFrame } from "@/components/SiteFrame";
 import type { HomeCopy, Locale } from "@/i18n";
@@ -18,7 +18,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
   return (
     <SiteFrame locale={locale} copy={copy}>
       <section
-        className="magnetic-glow relative isolate min-h-screen px-4 pb-24 pt-32 sm:px-6 lg:pt-36"
+        className="magnetic-glow relative isolate min-h-screen px-4 pb-20 pt-28 sm:px-6 lg:pt-32"
         style={{ "--x": spot.x, "--y": spot.y } as React.CSSProperties}
         onPointerMove={(event) => {
           const rect = event.currentTarget.getBoundingClientRect();
@@ -30,55 +30,57 @@ export function HomePage({ locale, copy }: HomePageProps) {
       >
         <div className="absolute inset-0 -z-20">
           <Image
-            src="/hero-gaming-marketplace.png"
-            alt="Premium gaming PC and digital marketplace infrastructure"
+            src="/hero-digital-assets.png"
+            alt="Premium digital assets marketplace visual"
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-70"
+            className="object-cover opacity-85"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,#030303_0%,rgba(3,3,3,0.88)_28%,rgba(3,3,3,0.34)_68%,#030303_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_40%,transparent_0,rgba(3,3,3,0.7)_58%,#030303_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0.88)_34%,rgba(0,0,0,0.22)_72%,#000_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_66%_42%,transparent_0,rgba(0,0,0,0.62)_62%,#000_100%)]" />
         </div>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="reveal relative z-10 max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-ember/60 bg-ember/10 px-3 py-2 text-sm font-black uppercase text-flare shadow-glow">
+        <div className="mx-auto max-w-7xl">
+          <div className="reveal relative z-10 max-w-3xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-ember/70 bg-ember/10 px-3 py-2 text-sm font-black uppercase text-flare shadow-glow">
               <Flame size={16} />
               {copy.hero.eyebrow}
             </div>
-            <h1 className="font-display text-5xl font-black leading-tight text-bone sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.06em] text-bone sm:text-7xl lg:text-8xl">
               {copy.hero.title}
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-bone/72 sm:text-xl">{copy.hero.body}</p>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-bone/78 sm:text-xl">{copy.hero.body}</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
-                href={`/${locale}/contact`}
-                className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-flare px-6 py-4 text-sm font-black uppercase text-blacktop shadow-glow transition hover:scale-[1.02] hover:bg-ember"
+                href={`/${locale}/store`}
+                className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-6 py-4 text-sm font-black uppercase text-blacktop shadow-glow transition hover:scale-[1.02] hover:bg-flare"
               >
                 {copy.hero.primary}
-                <ArrowRight size={18} className="transition group-hover:translate-x-1" />
+                <ShoppingCart size={18} className="transition group-hover:translate-x-1" />
               </Link>
               <Link
-                href={`/${locale}/compliance`}
+                href={`/${locale}/about`}
                 className="inline-flex items-center justify-center rounded-[8px] border border-pulse/50 bg-pulse/10 px-6 py-4 text-sm font-black uppercase text-bone shadow-cyan transition hover:bg-pulse/20"
               >
                 {copy.hero.secondary}
               </Link>
             </div>
+            <div className="mt-4 text-sm font-bold uppercase tracking-[0.18em] text-flare">{copy.hero.store}</div>
           </div>
+        </div>
+      </section>
 
-          <div className="float-core relative mx-auto hidden aspect-square w-full max-w-[520px] lg:block">
-            <div className="pulse-ring absolute inset-8 rounded-full border border-ember/40 shadow-glow" />
-            <div className="pulse-ring absolute inset-20 rounded-full border border-pulse/30 shadow-cyan [animation-delay:500ms]" />
-            <div className="absolute inset-32 rounded-[8px] border border-white/15 bg-white/5 backdrop-blur-md" />
-            <div className="absolute left-16 top-24 rounded-[8px] border border-ember/40 bg-black/50 px-4 py-3 shadow-glow">
-              <span className="text-xs font-black uppercase text-flare">verified</span>
-            </div>
-            <div className="absolute bottom-24 right-12 rounded-[8px] border border-pulse/40 bg-black/50 px-4 py-3 shadow-cyan">
-              <span className="text-xs font-black uppercase text-pulse">traceable</span>
-            </div>
-          </div>
+      <section className="relative z-10 -mt-10 overflow-hidden border-y border-white/10 bg-black/60 py-4">
+        <div className="marquee-track flex w-max gap-3">
+          {[...copy.marquee, ...copy.marquee].map((item, index) => (
+            <span
+              key={`${item}-${index}`}
+              className="rounded-[8px] border border-ember/40 bg-ember/10 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-flare shadow-glow"
+            >
+              {item}
+            </span>
+          ))}
         </div>
       </section>
 
@@ -94,9 +96,19 @@ export function HomePage({ locale, copy }: HomePageProps) {
       </section>
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <div className="mb-4 text-sm font-black uppercase tracking-[0.18em] text-flare">Mission</div>
+            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.05em] text-bone sm:text-6xl">{copy.mission.title}</h2>
+          </div>
+          <p className="text-lg leading-8 text-bone/70 sm:text-xl">{copy.mission.body}</p>
+        </div>
+      </section>
+
+      <section className="relative z-10 px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex items-end justify-between gap-6">
-            <h2 className="max-w-3xl text-4xl font-black leading-tight text-bone sm:text-6xl">Signal. Supply. Control.</h2>
+            <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.05em] text-bone sm:text-6xl">Source. Validate. Distribute.</h2>
             <Sparkles className="hidden text-flare md:block" size={42} />
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -113,6 +125,18 @@ export function HomePage({ locale, copy }: HomePageProps) {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 overflow-hidden py-12">
+        <div className="carousel-reverse flex w-max gap-4 px-4">
+          {copy.flow.concat(copy.flow).map((item, index) => (
+            <div key={`${item.step}-${index}`} className="w-72 rounded-[8px] border border-pulse/30 bg-pulse/10 p-5 shadow-cyan">
+              <div className="mb-8 text-xs font-black text-pulse">{item.step}</div>
+              <h3 className="text-2xl font-black text-bone">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-bone/62">{item.body}</p>
+            </div>
+          ))}
         </div>
       </section>
 

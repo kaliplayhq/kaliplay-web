@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       description: text.meta.description,
       url: `/${locale}`,
       siteName: "Kaliplay",
-      images: [{ url: "/hero-gaming-marketplace.png", width: 1600, height: 900, alt: "Kaliplay gaming marketplace visual" }],
+      images: [{ url: "/hero-digital-assets.png", width: 1600, height: 900, alt: "Kaliplay digital assets marketplace visual" }],
       locale,
       type: "website"
     },
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       card: "summary_large_image",
       title: text.meta.title,
       description: text.meta.description,
-      images: ["/hero-gaming-marketplace.png"]
+      images: ["/hero-digital-assets.png"]
     }
   };
 }
