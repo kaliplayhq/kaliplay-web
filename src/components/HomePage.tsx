@@ -140,7 +140,22 @@ export function HomePage({ locale, copy }: HomePageProps) {
                 </div>
                 {index < workflowSteps.length - 1 ? (
                   <div className="workflow-arrow" aria-hidden="true">
-                    <span />
+                    <svg viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="wfArrow" x1="22" y1="2" x2="22" y2="50" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#ff9a2e" />
+                          <stop offset="0.55" stopColor="#ff2a00" />
+                          <stop offset="1" stopColor="#bf1400" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M18 4 H26 a2 2 0 0 1 2 2 V26 H38 a2 2 0 0 1 1.5 3.3 L23.6 47 a2.2 2.2 0 0 1-3.2 0 L4.5 29.3 A2 2 0 0 1 6 26 H16 V6 a2 2 0 0 1 2-2 Z"
+                        fill="url(#wfArrow)"
+                        stroke="rgba(255,228,188,0.92)"
+                        strokeWidth="1.4"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
                 ) : null}
               </div>
@@ -150,15 +165,13 @@ export function HomePage({ locale, copy }: HomePageProps) {
       </section>
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
-        <div className="cta-panel mx-auto grid max-w-7xl gap-8 p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <div className="cta-kicker">{copy.pages.contact.eyebrow}</div>
-            <p className="mt-2 max-w-2xl text-lg leading-8 text-bone/68">
-              {copy.pages.contact.body}
-            </p>
-          </div>
-          <div className="contact-panel rounded-[8px] p-5">
-            <ContactRequestForm locale={locale} />
+        <div className="cta-panel mx-auto max-w-3xl p-8 text-center sm:p-14">
+          <div className="cta-kicker">{copy.pages.contact.eyebrow}</div>
+          <p className="mx-auto mt-3 max-w-xl text-lg leading-8 text-bone/68">
+            {copy.pages.contact.body}
+          </p>
+          <div className="contact-panel mx-auto mt-9 max-w-xl rounded-[16px] p-6 text-left sm:p-7">
+            <ContactRequestForm locale={locale} large />
           </div>
         </div>
       </section>

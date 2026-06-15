@@ -10,11 +10,12 @@ type ContactRequestFormProps = {
   locale: Locale;
   emailTo?: string;
   subjectPrefix?: string;
+  large?: boolean;
 };
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request" }: ContactRequestFormProps) {
+export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request", large = false }: ContactRequestFormProps) {
   const text = getCopy(locale).form;
   const partyTypes = text.parties;
   const [party, setParty] = useState(partyTypes[0]);
@@ -75,7 +76,7 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
 
   return (
     <form className="contact-form grid gap-4" onSubmit={submitRequest}>
-      <h2 className="text-3xl font-semibold tracking-[-0.05em] text-bone">{text.title}</h2>
+      <h2 className={`font-semibold tracking-[-0.05em] text-bone ${large ? "text-center text-4xl sm:text-5xl" : "text-3xl"}`}>{text.title}</h2>
       <div className="grid gap-2 text-sm font-semibold text-bone/72">
         <span id="party-label">{text.party}</span>
         <div ref={partyRef} className="party-dropdown" data-open={partyOpen} onKeyDown={(event) => event.key === "Escape" && setPartyOpen(false)}>
@@ -147,7 +148,7 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
       <button
         type="submit"
         disabled={sending}
-        className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-1 inline-flex w-full items-center justify-center gap-2 justify-self-center rounded-[8px] bg-ember px-8 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-14"
       >
         {sending ? text.sending : text.send}
         <Send size={18} />
