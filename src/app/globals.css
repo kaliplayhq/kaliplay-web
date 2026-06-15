@@ -635,48 +635,98 @@ a {
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-.select-shell {
+.party-dropdown {
   position: relative;
-  display: grid;
+}
+
+.party-trigger {
+  display: flex;
   align-items: center;
-}
-
-.select-shell svg {
-  pointer-events: none;
-  position: absolute;
-  right: 1rem;
-  color: #00e5ff;
-  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
-}
-
-.contact-select {
+  justify-content: space-between;
+  gap: 0.5rem;
   width: 100%;
-  appearance: none;
   border-radius: 8px;
   border: 1px solid rgba(255, 106, 0, 0.5);
   background:
     radial-gradient(circle at 8% 0%, rgba(255, 42, 0, 0.22), transparent 12rem),
     linear-gradient(135deg, rgba(255, 42, 0, 0.14), rgba(0, 229, 255, 0.08)),
     #050507;
-  padding: 0.85rem 3rem 0.85rem 1rem;
+  padding: 0.85rem 1rem;
   color: #f7f7f5;
+  text-align: left;
+  font-weight: 600;
   outline: none;
+  cursor: pointer;
   box-shadow:
     0 0 22px rgba(255, 42, 0, 0.22),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.contact-select:focus {
+.party-trigger svg {
+  flex: none;
+  color: #00e5ff;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+  transition: transform 180ms ease;
+}
+
+.party-dropdown[data-open="true"] .party-trigger {
   border-color: rgba(0, 229, 255, 0.82);
   box-shadow:
     0 0 28px rgba(0, 229, 255, 0.28),
-    0 0 24px rgba(255, 42, 0, 0.22),
     inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.contact-select option {
+.party-dropdown[data-open="true"] .party-trigger svg {
+  transform: rotate(180deg);
+}
+
+.party-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 30;
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  max-height: 16rem;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 106, 0, 0.5);
   background: #050507;
+  box-shadow:
+    0 0 28px rgba(255, 42, 0, 0.26),
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.party-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(247, 247, 245, 0.78);
+  cursor: pointer;
+  outline: none;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.party-option svg {
+  flex: none;
+  color: #00e5ff;
+}
+
+.party-option:hover,
+.party-option:focus-visible,
+.party-option[aria-selected="true"] {
+  background: linear-gradient(135deg, rgba(255, 42, 0, 0.18), rgba(0, 229, 255, 0.08));
   color: #f7f7f5;
 }
 

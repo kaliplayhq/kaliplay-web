@@ -1,7 +1,7 @@
 "use client";
 
-import { ChevronDown, Send } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { Check, ChevronDown, Send } from "lucide-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { getCopy, type Locale } from "@/i18n";
 
 const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
@@ -18,9 +18,19 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
   const text = getCopy(locale).form;
   const partyTypes = text.parties;
   const [party, setParty] = useState(partyTypes[0]);
+  const [partyOpen, setPartyOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const partyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function close(event: PointerEvent) {
+      if (!partyRef.current?.contains(event.target as Node)) setPartyOpen(false);
+    }
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, []);
 
   async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -66,17 +76,49 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
   return (
     <form className="contact-form grid gap-4" onSubmit={submitRequest}>
       <h2 className="text-3xl font-semibold tracking-[-0.05em] text-bone">{text.title}</h2>
-      <label className="grid gap-2 text-sm font-semibold text-bone/72">
-        {text.party}
-        <span className="select-shell">
-          <select required value={party} onChange={(event) => setParty(event.target.value)} className="contact-select">
-            {partyTypes.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
-          <ChevronDown size={18} aria-hidden="true" />
-        </span>
-      </label>
+      <div className="grid gap-2 text-sm font-semibold text-bone/72">
+        <span id="party-label">{text.party}</span>
+        <div ref={partyRef} className="party-dropdown" data-open={partyOpen} onKeyDown={(event) => event.key === "Escape" && setPartyOpen(false)}>
+          <button
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded={partyOpen}
+            aria-labelledby="party-label"
+            className="party-trigger"
+            onClick={() => setPartyOpen((open) => !open)}
+          >
+            <span>{party}</span>
+            <ChevronDown size={18} aria-hidden="true" />
+          </button>
+          {partyOpen ? (
+            <ul role="listbox" aria-labelledby="party-label" className="party-list">
+              {partyTypes.map((item) => (
+                <li
+                  key={item}
+                  role="option"
+                  aria-selected={item === party}
+                  tabIndex={0}
+                  className="party-option"
+                  onClick={() => {
+                    setParty(item);
+                    setPartyOpen(false);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setParty(item);
+                      setPartyOpen(false);
+                    }
+                  }}
+                >
+                  <span>{item}</span>
+                  {item === party ? <Check size={16} aria-hidden="true" /> : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
 
       <label className="grid gap-2 text-sm font-semibold text-bone/72">
         {text.email}

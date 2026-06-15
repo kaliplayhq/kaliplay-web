@@ -153,8 +153,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
         <div className="cta-panel mx-auto grid max-w-7xl gap-8 p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <div className="cta-kicker">{copy.pages.contact.eyebrow}</div>
-            <h2 className="max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-bone sm:text-6xl">{copy.pages.contact.title}</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-bone/68">
+            <p className="mt-2 max-w-2xl text-lg leading-8 text-bone/68">
               {copy.pages.contact.body}
             </p>
           </div>

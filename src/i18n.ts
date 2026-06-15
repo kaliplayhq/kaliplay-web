@@ -74,7 +74,6 @@ export type HomeCopy = {
   nav: Record<PageSlug, string> & { home: string };
   hero: { eyebrow: string; title: string; body: string; primary: string; secondary: string; store: string };
   mission: { title: string; body: string };
-  cta: { kicker: string; title: string; body: string; action: string; email: string };
   footer: string;
   home: HomeSection;
   form: FormCopy;
@@ -108,13 +107,6 @@ const en: HomeCopy = {
     title: "Make digital asset commerce cleaner, faster, and safer.",
     body: "Kaliplay turns fragmented digital supply into a controlled distribution operation: verified sources, transparent regions, auditable inventory, and customer-ready delivery."
   },
-  cta: {
-    kicker: "Contact",
-    title: "Tell us what digital inventory you need to move.",
-    body: "Suppliers, marketplaces, publishers, partners, and buyers can contact Kaliplay about inventory, access, partnerships, and compliance questions.",
-    action: "Send request",
-    email: "info@kaliplay.com"
-  },
   footer: "Documented digital inventory for marketplace distribution.",
   home: {
     missionLabel: "Mission",
@@ -143,7 +135,7 @@ const en: HomeCopy = {
     ]
   },
   form: {
-    title: "Please tell us about you.",
+    title: "Tell us about your business.",
     party: "Party type",
     email: "Email",
     emailPlaceholder: "name@company.com",
@@ -182,7 +174,7 @@ const en: HomeCopy = {
     about: {
       eyebrow: "Vision",
       title: "A trusted layer for digital asset distribution.",
-      body: "Kaliplay is building a controlled marketplace operation for documented digital goods: clear source records, validated rights, transparent activation rules, and reliable delivery paths.",
+      body: "Kaliplay operates a controlled marketplace for documented digital goods: clear source records, validated rights, transparent activation rules, and reliable delivery paths.",
       bullets: ["Broader than games: software, vouchers, top-ups, collectibles, courses, domains, and other documented digital assets.", "Traceable supply before scale.", "Storefront, admin system, and pricing intelligence roadmap."]
     },
     compliance: {
@@ -193,7 +185,7 @@ const en: HomeCopy = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Tell us what digital inventory you need to move.",
+      title: "Get in touch.",
       body: "Suppliers, marketplaces, publishers, partners, and buyers can use this form for inventory, access, partnership, or compliance questions.",
       bullets: []
     },
@@ -332,13 +324,6 @@ const es: Translation = {
     title: "Hacer el comercio de activos digitales más limpio, rápido y seguro.",
     body: "Kaliplay convierte un suministro digital fragmentado en una operación de distribución controlada: fuentes verificadas, regiones transparentes, inventario auditable y entrega lista para el cliente."
   },
-  cta: {
-    kicker: "Contacto",
-    title: "Contanos qué inventario digital necesitás mover.",
-    body: "Proveedores, marketplaces, publishers, partners y compradores pueden contactar a Kaliplay por inventario, acceso, alianzas y consultas de cumplimiento.",
-    action: "Enviar consulta",
-    email: "info@kaliplay.com"
-  },
   footer: "Inventario digital documentado para distribución en marketplaces.",
   home: {
     missionLabel: "Misión",
@@ -367,7 +352,7 @@ const es: Translation = {
     ]
   },
   form: {
-    title: "Contanos sobre vos.",
+    title: "Contanos sobre tu empresa.",
     party: "Tipo de parte",
     email: "Email",
     emailPlaceholder: "nombre@empresa.com",
@@ -401,7 +386,7 @@ const es: Translation = {
     about: {
       eyebrow: "Visión",
       title: "Una capa confiable para la distribución de activos digitales.",
-      body: "Kaliplay está construyendo una operación de marketplace controlada para bienes digitales documentados: registros de origen claros, derechos validados, reglas de activación transparentes y vías de entrega confiables.",
+      body: "Kaliplay opera un marketplace controlado para bienes digitales documentados: registros de origen claros, derechos validados, reglas de activación transparentes y vías de entrega confiables.",
       bullets: ["Más que juegos: software, vouchers, recargas, coleccionables, cursos, dominios y otros activos digitales documentados.", "Suministro trazable antes de escalar.", "Roadmap de tienda, sistema de administración e inteligencia de precios."]
     },
     compliance: {
@@ -412,7 +397,7 @@ const es: Translation = {
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Contanos qué inventario digital necesitás mover.",
+      title: "Hablemos.",
       body: "Proveedores, marketplaces, publishers, partners y compradores pueden usar este formulario para consultas de inventario, acceso, alianzas o cumplimiento.",
       bullets: []
     }
@@ -436,13 +421,6 @@ const pt: Translation = {
   mission: {
     title: "Tornar o comércio de ativos digitais mais limpo, rápido e seguro.",
     body: "A Kaliplay transforma um suprimento digital fragmentado em uma operação de distribuição controlada: fontes verificadas, regiões transparentes, inventário auditável e entrega pronta para o cliente."
-  },
-  cta: {
-    kicker: "Contato",
-    title: "Conte o que você precisa movimentar em inventário digital.",
-    body: "Fornecedores, marketplaces, publishers, parceiros e compradores podem falar com a Kaliplay sobre inventário, acesso, parcerias e questões de conformidade.",
-    action: "Enviar pedido",
-    email: "info@kaliplay.com"
   },
   footer: "Inventário digital documentado para distribuição em marketplaces.",
   home: {
@@ -472,7 +450,7 @@ const pt: Translation = {
     ]
   },
   form: {
-    title: "Conte sobre você.",
+    title: "Conte sobre sua empresa.",
     party: "Tipo de parte",
     email: "Email",
     emailPlaceholder: "nome@empresa.com",
@@ -506,7 +484,7 @@ const pt: Translation = {
     about: {
       eyebrow: "Visão",
       title: "Uma camada confiável para a distribuição de ativos digitais.",
-      body: "A Kaliplay está construindo uma operação de marketplace controlada para bens digitais documentados: registros de origem claros, direitos validados, regras de ativação transparentes e caminhos de entrega confiáveis.",
+      body: "A Kaliplay opera um marketplace controlado para bens digitais documentados: registros de origem claros, direitos validados, regras de ativação transparentes e caminhos de entrega confiáveis.",
       bullets: ["Mais do que jogos: software, vouchers, recargas, colecionáveis, cursos, domínios e outros ativos digitais documentados.", "Suprimento rastreável antes de escalar.", "Roadmap de loja, sistema de administração e inteligência de preços."]
     },
     compliance: {
@@ -517,7 +495,7 @@ const pt: Translation = {
     },
     contact: {
       eyebrow: "Contato",
-      title: "Conte o que você precisa movimentar em inventário digital.",
+      title: "Fale conosco.",
       body: "Fornecedores, marketplaces, publishers, parceiros e compradores podem usar este formulário para questões de inventário, acesso, parceria ou conformidade.",
       bullets: []
     }
@@ -536,7 +514,6 @@ function merge(locale: Locale): HomeCopy {
     nav: { ...en.nav, ...partial.nav },
     hero: { ...en.hero, ...partial.hero },
     mission: { ...en.mission, ...partial.mission },
-    cta: { ...en.cta, ...partial.cta },
     form: { ...en.form, ...partial.form },
     storeGate: { ...en.storeGate, ...partial.storeGate },
     home: partial.home

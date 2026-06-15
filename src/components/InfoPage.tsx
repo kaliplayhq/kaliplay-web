@@ -12,12 +12,13 @@ type InfoPageProps = {
 
 export function InfoPage({ locale, copy, page }: InfoPageProps) {
   const content = copy.pages[page];
+  const isContact = page === "contact";
 
   return (
     <SiteFrame locale={locale} copy={copy}>
       <section className="relative min-h-screen px-4 pb-24 pt-32 sm:px-6">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,77,0,0.25),transparent_28rem),radial-gradient(circle_at_80%_18%,rgba(0,229,255,0.12),transparent_24rem)]" />
-        <div className="mx-auto max-w-5xl">
+        <div className={`mx-auto ${isContact ? "max-w-2xl" : "max-w-5xl"}`}>
           <Link href={`/${locale}`} className="mb-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-bone/60 transition hover:text-flare">
             <ArrowLeft size={16} />
             {copy.nav.home}
