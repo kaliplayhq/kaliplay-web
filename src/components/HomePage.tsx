@@ -125,7 +125,6 @@ export function HomePage({ locale, copy }: HomePageProps) {
             </h2>
           </div>
           <div className="lg:pl-8 lg:border-l lg:border-white/10">
-            <div className="mb-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-flare to-pulse shadow-[0_0_14px_rgba(255,90,0,0.5)]" />
             <p className="max-w-xl text-lg leading-8 text-bone/78 sm:text-xl">{copy.mission.body}</p>
             <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-bone/40">Verified sources · Transparent regions · Auditable inventory</p>
           </div>
