@@ -115,7 +115,14 @@ export function HomePage({ locale, copy }: HomePageProps) {
         <div className="mission-panel mx-auto grid max-w-7xl gap-8 p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center sm:p-12">
           <div>
             <div className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-flare">{copy.home.missionLabel}</div>
-            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.05em] text-bone sm:text-6xl">{copy.mission.title}</h2>
+            <h2 className="text-4xl font-semibold leading-[1.02] tracking-[-0.05em] text-bone sm:text-6xl">
+              <span className="block text-bone/80">{copy.mission.lead}</span>
+              {copy.mission.adjectives.map((adj) => (
+                <span key={adj} className="mission-adj mt-1 block">
+                  {adj}.
+                </span>
+              ))}
+            </h2>
           </div>
           <p className="text-lg leading-8 text-bone/70 sm:text-xl">{copy.mission.body}</p>
         </div>

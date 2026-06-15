@@ -73,7 +73,7 @@ export type HomeCopy = {
   meta: { title: string; description: string };
   nav: Record<PageSlug, string> & { home: string };
   hero: { eyebrow: string; title: string; body: string; primary: string; secondary: string; store: string };
-  mission: { title: string; body: string };
+  mission: { lead: string; adjectives: string[]; body: string };
   footer: string;
   home: HomeSection;
   form: FormCopy;
@@ -104,7 +104,8 @@ const en: HomeCopy = {
     store: ""
   },
   mission: {
-    title: "Make digital asset commerce cleaner, faster, and safer.",
+    lead: "Make digital asset commerce",
+    adjectives: ["Cleaner", "Faster", "Safer"],
     body: "Kaliplay turns fragmented digital supply into a controlled distribution operation: verified sources, transparent regions, auditable inventory, and customer-ready delivery."
   },
   footer: "Documented digital inventory for marketplace distribution.",
@@ -321,7 +322,8 @@ const es: Translation = {
     store: ""
   },
   mission: {
-    title: "Hacer el comercio de activos digitales más limpio, rápido y seguro.",
+    lead: "Hacer el comercio de activos digitales",
+    adjectives: ["Más limpio", "Más rápido", "Más seguro"],
     body: "Kaliplay convierte un suministro digital fragmentado en una operación de distribución controlada: fuentes verificadas, regiones transparentes, inventario auditable y entrega lista para el cliente."
   },
   footer: "Inventario digital documentado para distribución en marketplaces.",
@@ -419,7 +421,8 @@ const pt: Translation = {
     store: ""
   },
   mission: {
-    title: "Tornar o comércio de ativos digitais mais limpo, rápido e seguro.",
+    lead: "Tornar o comércio de ativos digitais",
+    adjectives: ["Mais limpo", "Mais rápido", "Mais seguro"],
     body: "A Kaliplay transforma um suprimento digital fragmentado em uma operação de distribuição controlada: fontes verificadas, regiões transparentes, inventário auditável e entrega pronta para o cliente."
   },
   footer: "Inventário digital documentado para distribuição em marketplaces.",
