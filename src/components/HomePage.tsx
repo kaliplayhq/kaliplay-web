@@ -93,56 +93,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
                   <div className="flex items-start justify-between gap-5">
                     <span className="asset-code">{card.code}</span>
                     <span className="asset-medal" aria-label={copy.home.verified}>
-                      <svg className="asset-seal" viewBox="0 0 100 100" aria-hidden="true">
-                        <defs>
-                          <radialGradient id="sealGold" cx="38%" cy="30%" r="78%">
-                            <stop offset="0%" stopColor="#fff8e2" />
-                            <stop offset="26%" stopColor="#ffe79c" />
-                            <stop offset="54%" stopColor="#f0c258" />
-                            <stop offset="78%" stopColor="#c68d2c" />
-                            <stop offset="100%" stopColor="#8f611a" />
-                          </radialGradient>
-                          <linearGradient id="sealHolo" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#ff4db8" />
-                            <stop offset="28%" stopColor="#ffd24d" />
-                            <stop offset="52%" stopColor="#46ffd0" />
-                            <stop offset="78%" stopColor="#4db8ff" />
-                            <stop offset="100%" stopColor="#c44dff" />
-                          </linearGradient>
-                          <linearGradient id="sealShine" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-                            <stop offset="50%" stopColor="#ffffff" stopOpacity="0.95" />
-                            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                          </linearGradient>
-                          <clipPath id="sealClip">
-                            <path d="M 50 17 A 6.44 6.44 0 0 1 62.63 19.51 A 6.44 6.44 0 0 1 73.33 26.67 A 6.44 6.44 0 0 1 80.49 37.37 A 6.44 6.44 0 0 1 83 50 A 6.44 6.44 0 0 1 80.49 62.63 A 6.44 6.44 0 0 1 73.33 73.33 A 6.44 6.44 0 0 1 62.63 80.49 A 6.44 6.44 0 0 1 50 83 A 6.44 6.44 0 0 1 37.37 80.49 A 6.44 6.44 0 0 1 26.67 73.33 A 6.44 6.44 0 0 1 19.51 62.63 A 6.44 6.44 0 0 1 17 50 A 6.44 6.44 0 0 1 19.51 37.37 A 6.44 6.44 0 0 1 26.67 26.67 A 6.44 6.44 0 0 1 37.37 19.51 A 6.44 6.44 0 0 1 50 17 Z" />
-                          </clipPath>
-                          <path id="sealArc" d="M 29.5 52 A 20.5 20.5 0 0 1 70.5 52" fill="none" />
-                        </defs>
-                        <path
-                          d="M 50 17 A 6.44 6.44 0 0 1 62.63 19.51 A 6.44 6.44 0 0 1 73.33 26.67 A 6.44 6.44 0 0 1 80.49 37.37 A 6.44 6.44 0 0 1 83 50 A 6.44 6.44 0 0 1 80.49 62.63 A 6.44 6.44 0 0 1 73.33 73.33 A 6.44 6.44 0 0 1 62.63 80.49 A 6.44 6.44 0 0 1 50 83 A 6.44 6.44 0 0 1 37.37 80.49 A 6.44 6.44 0 0 1 26.67 73.33 A 6.44 6.44 0 0 1 19.51 62.63 A 6.44 6.44 0 0 1 17 50 A 6.44 6.44 0 0 1 19.51 37.37 A 6.44 6.44 0 0 1 26.67 26.67 A 6.44 6.44 0 0 1 37.37 19.51 A 6.44 6.44 0 0 1 50 17 Z"
-                          fill="url(#sealGold)"
-                          stroke="#7a5214"
-                          strokeWidth="1.4"
-                          strokeLinejoin="round"
-                        />
-                        <g clipPath="url(#sealClip)">
-                          <rect className="seal-holo" x="0" y="0" width="100" height="100" fill="url(#sealHolo)" />
-                          <g transform="rotate(12 50 50)">
-                            <rect className="seal-shine" x="-46" y="-20" width="34" height="140" fill="url(#sealShine)">
-                              <animateTransform attributeName="transform" type="translate" values="0 0; 150 0; 150 0" keyTimes="0; 0.42; 1" dur="4s" repeatCount="indefinite" />
-                            </rect>
-                          </g>
-                        </g>
-                        <circle cx="50" cy="50" r="28.5" fill="none" stroke="rgba(122,82,20,0.55)" strokeWidth="1.4" />
-                        <circle cx="50" cy="50" r="26.5" fill="none" stroke="rgba(255,246,196,0.6)" strokeWidth="0.8" />
-                        <path d="M41.5 43.5 l5 6 l11.5 -14" fill="none" stroke="#6b4406" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" />
-                        <text className="seal-text" textAnchor="middle">
-                          <textPath href="#sealArc" startOffset="50%">
-                            {copy.home.verified}
-                          </textPath>
-                        </text>
-                      </svg>
+                      <Image className="asset-seal" src="/verified-seal.png" alt="" width={96} height={96} aria-hidden="true" />
                     </span>
                   </div>
                   <div className="asset-visual" aria-label={`Compatible brands: ${card.brands.map((b) => brandIcons[b].name).join(", ")}`}>
