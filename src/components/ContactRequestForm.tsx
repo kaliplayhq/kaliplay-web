@@ -148,7 +148,7 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
       <button
         type="submit"
         disabled={sending}
-        className="mt-1 inline-flex w-full items-center justify-center gap-2 justify-self-center rounded-[8px] bg-ember px-8 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-14"
+        className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-ember px-8 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare disabled:cursor-not-allowed disabled:opacity-60"
       >
         {sending ? text.sending : text.send}
         <Send size={18} />
