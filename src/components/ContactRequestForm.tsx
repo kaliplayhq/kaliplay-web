@@ -2,16 +2,17 @@
 
 import { ChevronDown, Send } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { getCopy, type Locale } from "@/i18n";
 
 type ContactRequestFormProps = {
+  locale: Locale;
   emailTo?: string;
   subjectPrefix?: string;
-  title?: string;
 };
 
-const partyTypes = ["Supplier", "Publisher", "Marketplace", "Digital asset partner", "Buyer", "Other"];
-
-export function ContactRequestForm({ emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request", title = "Please tell us about you." }: ContactRequestFormProps) {
+export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request" }: ContactRequestFormProps) {
+  const text = getCopy(locale).form;
+  const partyTypes = text.parties;
   const [party, setParty] = useState(partyTypes[0]);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -27,9 +28,9 @@ export function ContactRequestForm({ emailTo = "info@kaliplay.com", subjectPrefi
 
   return (
     <form className="contact-form grid gap-4" onSubmit={submitRequest}>
-      <h2 className="text-3xl font-semibold tracking-[-0.05em] text-bone">{title}</h2>
+      <h2 className="text-3xl font-semibold tracking-[-0.05em] text-bone">{text.title}</h2>
       <label className="grid gap-2 text-sm font-semibold text-bone/72">
-        Party type
+        {text.party}
         <span className="select-shell">
           <select required value={party} onChange={(event) => setParty(event.target.value)} className="contact-select">
             {partyTypes.map((item) => (
@@ -41,34 +42,34 @@ export function ContactRequestForm({ emailTo = "info@kaliplay.com", subjectPrefi
       </label>
 
       <label className="grid gap-2 text-sm font-semibold text-bone/72">
-        Email
+        {text.email}
         <input
           required
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="name@company.com"
+          placeholder={text.emailPlaceholder}
           className="rounded-[8px] border border-white/10 bg-black px-4 py-3 text-bone outline-none transition placeholder:text-bone/30 focus:border-pulse/70 focus:shadow-cyan"
         />
       </label>
 
       <label className="grid gap-2 text-sm font-semibold text-bone/72">
-        Message
+        {text.message}
         <textarea
           required
           rows={5}
           value={message}
           onChange={(event) => setMessage(event.target.value)}
-          placeholder="Tell us what inventory, access, partnership, or review you need."
+          placeholder={text.messagePlaceholder}
           className="resize-none rounded-[8px] border border-white/10 bg-black px-4 py-3 text-bone outline-none transition placeholder:text-bone/30 focus:border-pulse/70 focus:shadow-cyan"
         />
       </label>
 
       <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare">
-        Send request
+        {text.send}
         <Send size={18} />
       </button>
-      {sent ? <div className="rounded-[8px] border border-pulse/40 bg-pulse/10 px-4 py-3 text-sm font-semibold text-pulse">Request prepared. Your email client should open to send it to info@kaliplay.com.</div> : null}
+      {sent ? <div className="rounded-[8px] border border-pulse/40 bg-pulse/10 px-4 py-3 text-sm font-semibold text-pulse">{text.prepared}</div> : null}
     </form>
   );
 }

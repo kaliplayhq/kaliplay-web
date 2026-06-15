@@ -13,6 +13,7 @@ type StoreGateProps = {
 };
 
 export function StoreGate({ locale, copy }: StoreGateProps) {
+  const gate = copy.storeGate;
   const [requestOpen, setRequestOpen] = useState(false);
   const [loginError, setLoginError] = useState(false);
 
@@ -34,38 +35,38 @@ export function StoreGate({ locale, copy }: StoreGateProps) {
           <div className="store-gate-panel rounded-[8px] p-6 sm:p-10">
             <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-pulse/40 bg-pulse/10 px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-pulse">
               <LockKeyhole size={16} />
-              Store login
+              {gate.badge}
             </div>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-7xl">Sign in to Kaliplay Store.</h1>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-7xl">{gate.heading}</h1>
 
             <div className="mt-10 grid gap-4 md:grid-cols-[0.95fr_1.05fr]">
               <div className="rounded-[8px] border border-white/10 bg-black/45 p-5">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-[8px] border border-ember/60 bg-ember/10 text-flare shadow-glow">
                   <LockKeyhole size={24} />
                 </div>
-                <h2 className="text-2xl font-semibold tracking-[-0.04em] text-bone">Registered already?</h2>
+                <h2 className="text-2xl font-semibold tracking-[-0.04em] text-bone">{gate.registered}</h2>
                 <form className="mt-6 grid gap-4" onSubmit={submitLogin}>
                   <label className="grid gap-2 text-sm font-semibold text-bone/72">
-                    Email
+                    {gate.email}
                     <input
                       required
                       type="email"
-                      placeholder="name@company.com"
+                      placeholder={gate.emailPlaceholder}
                       className="rounded-[8px] border border-white/10 bg-black/60 px-4 py-3 text-bone outline-none transition placeholder:text-bone/30 focus:border-pulse/70 focus:shadow-cyan"
                     />
                   </label>
                   <label className="grid gap-2 text-sm font-semibold text-bone/72">
-                    Password
+                    {gate.password}
                     <input
                       required
                       type="password"
-                      placeholder="Password"
+                      placeholder={gate.passwordPlaceholder}
                       className="rounded-[8px] border border-white/10 bg-black/60 px-4 py-3 text-bone outline-none transition placeholder:text-bone/30 focus:border-pulse/70 focus:shadow-cyan"
                     />
                   </label>
-                  {loginError ? <div className="rounded-[8px] border border-ember/40 bg-ember/10 px-4 py-3 text-sm font-semibold text-flare">Invalid credentials.</div> : null}
+                  {loginError ? <div className="rounded-[8px] border border-ember/40 bg-ember/10 px-4 py-3 text-sm font-semibold text-flare">{gate.invalid}</div> : null}
                   <button type="submit" className="w-full rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare">
-                    Login
+                    {gate.login}
                   </button>
                 </form>
               </div>
@@ -74,14 +75,14 @@ export function StoreGate({ locale, copy }: StoreGateProps) {
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-[8px] border border-pulse/60 bg-pulse/10 text-pulse shadow-cyan">
                   <Mail size={24} />
                 </div>
-                <h2 className="text-2xl font-semibold tracking-[-0.04em] text-bone">Need access?</h2>
-                <p className="mt-3 text-sm leading-6 text-bone/62">Request access as a supplier, marketplace, partner, or buyer.</p>
+                <h2 className="text-2xl font-semibold tracking-[-0.04em] text-bone">{gate.needAccess}</h2>
+                <p className="mt-3 text-sm leading-6 text-bone/62">{gate.needAccessBody}</p>
                 <button
                   type="button"
                   onClick={() => setRequestOpen(true)}
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:scale-[1.01] hover:bg-flare"
                 >
-                  Request access
+                  {gate.request}
                   <Mail size={18} />
                 </button>
               </div>
@@ -94,15 +95,15 @@ export function StoreGate({ locale, copy }: StoreGateProps) {
             <div className="store-modal w-full max-w-xl rounded-[8px] p-6 shadow-2xl sm:p-7">
               <div className="flex items-start justify-between gap-5">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-flare">Request access</div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-flare">{gate.requestEyebrow}</div>
                 </div>
                 <button type="button" onClick={() => setRequestOpen(false)} className="rounded-[8px] border border-white/10 px-3 py-2 text-sm text-bone/60 transition hover:text-bone">
-                  Close
+                  {gate.close}
                 </button>
               </div>
 
               <div className="mt-6">
-                <ContactRequestForm subjectPrefix="Kaliplay store access request" />
+                <ContactRequestForm locale={locale} subjectPrefix="Kaliplay store access request" />
               </div>
             </div>
           </div>
