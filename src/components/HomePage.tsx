@@ -109,6 +109,14 @@ export function HomePage({ locale, copy }: HomePageProps) {
                 </div>
                 <div className="asset-face asset-face-back">
                   <div className="text-2xl font-semibold tracking-[-0.045em] text-bone">{card.title}</div>
+                  <div className="asset-back-brands" aria-label={`Compatible brands: ${card.brands.map((b) => brandIcons[b].name).join(", ")}`}>
+                    {card.brands.map((b) => (
+                      <svg key={b} className="asset-back-brand" viewBox="0 0 24 24" role="img" aria-label={brandIcons[b].name}>
+                        <title>{brandIcons[b].name}</title>
+                        <path d={brandIcons[b].path} fill="currentColor" />
+                      </svg>
+                    ))}
+                  </div>
                   <p className="mt-4 text-sm leading-6 text-bone/72 text-justify">{card.detail}</p>
                 </div>
               </div>
