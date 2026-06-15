@@ -119,7 +119,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
         <div className="mission-panel mx-auto grid max-w-7xl gap-8 p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center sm:p-12">
-          <div>
+          <div className="text-center lg:text-left">
             <div className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-flare">{copy.home.missionLabel}</div>
             <h2 className="text-4xl font-semibold leading-[1.02] tracking-[-0.05em] text-bone sm:text-6xl">
               <span className="block text-bone/80">{copy.mission.lead}</span>
@@ -130,19 +130,19 @@ export function HomePage({ locale, copy }: HomePageProps) {
               ))}
             </h2>
           </div>
-          <div className="lg:pl-8 lg:border-l lg:border-white/10">
-            <p className="max-w-xl text-lg leading-8 text-bone/78 sm:text-xl">{copy.mission.body}</p>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-bone/40">Verified sources · Transparent regions · Auditable inventory</p>
+          <div className="text-center lg:pl-8 lg:border-l lg:border-white/10 lg:text-left">
+            <p className="mx-auto max-w-xl text-lg leading-8 text-bone/78 text-justify sm:text-xl lg:mx-0">{copy.mission.body}</p>
+            <p className="mt-6 whitespace-nowrap text-[clamp(0.45rem,2vw,0.78rem)] font-semibold uppercase tracking-[0.06em] text-bone/40">Verified sources · Transparent regions · Auditable inventory</p>
           </div>
         </div>
       </section>
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
         <div className="workflow-panel mx-auto max-w-5xl p-8 sm:p-12">
-          <div>
+          <div className="text-center lg:text-left">
             <div className="text-sm font-semibold uppercase tracking-[0.18em] text-flare">{copy.home.inventory.kicker}</div>
-            <h2 className="mt-2 max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-6xl">{copy.home.inventory.heading}</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-bone/68">
+            <h2 className="mx-auto mt-2 max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-6xl lg:mx-0">{copy.home.inventory.heading}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-bone/68 text-justify lg:mx-0">
               {copy.home.inventory.body}
             </p>
           </div>

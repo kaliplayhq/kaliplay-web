@@ -488,9 +488,10 @@ a {
 
 .workflow-copy {
   position: relative;
-  width: min(100%, 760px);
+  width: min(100%, 460px);
   border-radius: 16px;
   padding: 1.8rem 2rem;
+  text-align: center;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012)),
     radial-gradient(circle at 0% 0%, rgba(255, 42, 0, 0.14), transparent 20rem),
@@ -505,14 +506,20 @@ a {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-/* gradient neon LED border */
+/* detail copy justified, last line centered */
+.workflow-copy p {
+  text-align: justify;
+  text-align-last: center;
+}
+
+/* uniform orange neon LED border (same on all three cards) */
 .workflow-copy::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(135deg, rgba(255, 122, 0, 0.95), rgba(255, 42, 0, 0.7) 38%, rgba(0, 229, 255, 0.55));
+  background: linear-gradient(135deg, rgba(255, 150, 40, 0.95), rgba(255, 90, 0, 0.85) 50%, rgba(255, 122, 0, 0.9));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -528,30 +535,6 @@ a {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.workflow-step:nth-child(2) .workflow-copy {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012)),
-    radial-gradient(circle at 0% 0%, rgba(0, 229, 255, 0.14), transparent 20rem),
-    rgba(8, 8, 12, 0.86);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.58),
-    0 0 34px rgba(0, 229, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 30px rgba(0, 229, 255, 0.05);
-}
-
-.workflow-step:nth-child(2) .workflow-copy::before {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.9), rgba(0, 160, 255, 0.6) 40%, rgba(255, 122, 0, 0.75));
-}
-
-.workflow-step:nth-child(2) .workflow-copy:hover {
-  box-shadow:
-    0 26px 62px rgba(0, 0, 0, 0.62),
-    0 0 52px rgba(0, 229, 255, 0.42),
-    0 0 30px rgba(255, 42, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
 .workflow-kicker {
   margin-bottom: 0.5rem;
   color: #00e5ff;
@@ -560,11 +543,6 @@ a {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-shadow: 0 0 16px rgba(0, 229, 255, 0.7);
-}
-
-.workflow-step:nth-child(2) .workflow-kicker {
-  color: #ff7a2e;
-  text-shadow: 0 0 16px rgba(255, 90, 0, 0.6);
 }
 
 .mission-adj {
