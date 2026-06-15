@@ -70,50 +70,20 @@ a {
     radial-gradient(circle at calc(var(--x, 50%) + 18%) calc(var(--y, 40%) + 10%), rgba(0, 229, 255, 0.16), transparent 16rem);
 }
 
-.logo-mark {
-  display: inline-grid;
-  place-items: center;
+.brand-logo {
+  position: relative;
+  display: inline-block;
   flex: none;
-  border-radius: 10px;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 42, 0, 0.28), transparent 56%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 42, 0, 0.05));
-  box-shadow:
-    0 0 24px rgba(255, 42, 0, 0.46),
-    inset 0 0 0 1px rgba(255, 90, 0, 0.72);
+  filter:
+    drop-shadow(0 0 18px rgba(255, 42, 0, 0.38))
+    drop-shadow(0 0 24px rgba(0, 229, 255, 0.16));
 }
 
-.logo-mark svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.logo-frame {
-  fill: rgba(0, 0, 0, 0.74);
-  stroke: rgba(255, 90, 0, 0.88);
-  stroke-width: 2;
-}
-
-.logo-k {
-  fill: none;
-  stroke: #f7f7f5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 6;
-}
-
-.logo-play {
-  fill: #ff2a00;
-  filter: drop-shadow(0 0 10px rgba(255, 42, 0, 0.9));
-}
-
-.hero-brand {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-  text-shadow:
-    0 0 34px rgba(255, 42, 0, 0.5),
-    0 0 58px rgba(0, 229, 255, 0.18),
-    0 3px 28px rgba(0, 0, 0, 0.72);
+.hero-lockup {
+  filter:
+    drop-shadow(0 0 28px rgba(255, 42, 0, 0.5))
+    drop-shadow(0 0 42px rgba(0, 229, 255, 0.24))
+    drop-shadow(0 8px 24px rgba(0, 0, 0, 0.56));
 }
 
 .hero-copy-panel {

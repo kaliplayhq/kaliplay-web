@@ -21,7 +21,7 @@ import {
   Trophy
 } from "lucide-react";
 import { useState } from "react";
-import { LogoMark } from "@/components/LogoMark";
+import { BrandLogo } from "@/components/BrandLogo";
 import { SiteFrame } from "@/components/SiteFrame";
 import type { HomeCopy, Locale } from "@/i18n";
 
@@ -75,10 +75,8 @@ export function HomePage({ locale, copy }: HomePageProps) {
               <Flame size={16} />
               {copy.hero.eyebrow}
             </div>
-            <LogoMark className="mx-auto mb-5 h-20 w-20 sm:h-24 sm:w-24" />
-            <h1 className="hero-brand text-6xl font-semibold leading-[0.86] tracking-[-0.08em] text-bone sm:text-8xl lg:text-[9.5rem]">
-              Kaliplay
-            </h1>
+            <BrandLogo variant="lockupVertical" className="hero-lockup mx-auto mb-6 h-48 w-44 sm:h-56 sm:w-52" priority />
+            <h1 className="sr-only">Kaliplay</h1>
             <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-bone sm:text-5xl">
               {copy.hero.title}
             </h2>

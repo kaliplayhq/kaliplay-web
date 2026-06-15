@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-import { LogoMark } from "@/components/LogoMark";
+import { BrandLogo } from "@/components/BrandLogo";
 import { languages, locales, pageSlugs, type HomeCopy, type Locale } from "@/i18n";
 
 type SiteFrameProps = {
@@ -27,8 +27,7 @@ export function SiteFrame({ locale, copy, children }: SiteFrameProps) {
       <header className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-blacktop/70 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <Link href={`/${locale}`} className="group flex items-center gap-3" aria-label="Kaliplay home">
-            <LogoMark className="h-11 w-11" />
-            <span className="text-lg font-semibold tracking-[-0.02em] text-bone">Kaliplay</span>
+            <BrandLogo variant="lockupHorizontal" className="h-12 w-40 sm:w-48" priority />
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">
