@@ -33,11 +33,7 @@ export type HomeCopy = {
   meta: { title: string; description: string };
   nav: Record<PageSlug, string> & { home: string };
   hero: { eyebrow: string; title: string; body: string; primary: string; secondary: string; store: string };
-  stats: Array<{ value: string; label: string }>;
-  marquee: string[];
   mission: { title: string; body: string };
-  pillars: Array<{ title: string; body: string }>;
-  flow: Array<{ step: string; title: string; body: string }>;
   cta: { title: string; body: string; email: string };
   footer: string;
   pages: Record<PageSlug, { eyebrow: string; title: string; body: string; bullets: string[] }>;
@@ -45,8 +41,8 @@ export type HomeCopy = {
 
 const en: HomeCopy = {
   meta: {
-    title: "Kaliplay | Digital assets marketplace",
-    description: "Kaliplay sources, validates, and distributes documented digital assets with clear rights, regions, and operational traceability."
+    title: "Kaliplay | Traceable digital inventory",
+    description: "Kaliplay procures, validates, and distributes documented digital inventory with clear rights, regions, platform rules, and operational traceability."
   },
   nav: {
     home: "Home",
@@ -58,45 +54,29 @@ const en: HomeCopy = {
     privacy: "Privacy"
   },
   hero: {
-    eyebrow: "Digital assets marketplace",
+    eyebrow: "Traceable digital inventory",
     title: "Verified digital assets.",
-    body: "Kaliplay buys, validates, and distributes traceable digital inventory: games, content, licenses, perks, and other documented digital goods.",
-    primary: "Go to store",
-    secondary: "How it works",
-    store: "Store opening soon"
+    body: "We procure, validate and distribute traceable digital inventory",
+    primary: "Talk to Kaliplay",
+    secondary: "Store",
+    store: ""
   },
-  stats: [
-    { value: "100%", label: "Documented supply target" },
-    { value: "0", label: "Accounts sold" },
-    { value: "24/7", label: "Price and risk monitoring roadmap" }
-  ],
-  marquee: ["Digital goods", "Game keys", "Licenses", "DLC", "Perks", "Content drops", "Marketplace supply", "Regional clarity"],
   mission: {
-    title: "Our mission is to make digital asset commerce cleaner, faster, and safer.",
-    body: "Kaliplay exists to turn messy digital supply into a controlled marketplace operation: verified sources, transparent regions, auditable inventory, and customer-ready delivery."
+    title: "Make digital asset commerce cleaner, faster, and safer.",
+    body: "Kaliplay turns fragmented digital supply into a controlled distribution operation: verified sources, transparent regions, auditable inventory, and customer-ready delivery."
   },
-  pillars: [
-    { title: "Source", body: "Find digital assets from documented suppliers, publishers, platforms, and approved commercial programs." },
-    { title: "Validate", body: "Check rights, invoices, regions, platform rules, delivery constraints, replacement policy, and resale risk." },
-    { title: "Distribute", body: "Publish only inventory that is traceable, priced, monitored, and ready for support." }
-  ],
-  flow: [
-    { step: "01", title: "Acquire", body: "Qualify suppliers and asset categories before capital is committed." },
-    { step: "02", title: "Control", body: "Score margin, demand, fraud exposure, region confidence, and operational risk." },
-    { step: "03", title: "Deliver", body: "Prepare a buyer-facing store and marketplace channels with audit-ready inventory." }
-  ],
   cta: {
-    title: "Supplier, marketplace, or digital asset partner?",
-    body: "Talk to Kaliplay about documented inventory, distribution, compliance, or account review.",
+    title: "Bring documented inventory to market.",
+    body: "For suppliers, publishers, marketplaces, and commercial partners, Kaliplay reviews origin, rights, regions, pricing, and delivery readiness before inventory reaches buyers.",
     email: "info@kaliplay.com"
   },
-  footer: "Kaliplay does not sell accounts or use misleading regional activation practices.",
+  footer: "Documented digital inventory for marketplace distribution.",
   pages: {
     store: {
       eyebrow: "Store",
-      title: "Store under construction.",
-      body: "The direct Kaliplay store is being built. Initial operations focus on supplier validation, marketplace approval, and documented inventory readiness.",
-      bullets: ["Digital asset catalog coming soon.", "No public checkout is active yet.", "Marketplace and supplier discussions are open."]
+      title: "Private store access.",
+      body: "Kaliplay store access is reviewed before any buyer, supplier, or partner can enter.",
+      bullets: ["No public checkout is active.", "Access starts with contact review.", "Inventory remains gated until rights, regions, and delivery are validated."]
     },
     about: {
       eyebrow: "Vision",
@@ -133,52 +113,52 @@ const en: HomeCopy = {
 
 const translations: Record<Exclude<Locale, "en">, Partial<HomeCopy>> = {
   zh: {
-    meta: { title: "Kaliplay | 数字资产市场", description: "Kaliplay 验证并分发有记录的数字资产，关注权利、区域和可追踪运营。" },
+    meta: { title: "Kaliplay | 可追踪数字库存", description: "Kaliplay 采购、验证并分发有记录的数字库存，关注权利、区域、平台规则和可追踪运营。" },
     nav: { home: "首页", store: "商店", about: "愿景", compliance: "合规", contact: "联系", terms: "条款", privacy: "隐私" },
-    hero: { eyebrow: "数字资产市场", title: "已验证的数字资产。", body: "Kaliplay 采购、验证并分发可追踪数字库存：游戏、内容、许可证、权益和其他有记录的数字商品。", primary: "进入商店", secondary: "运作方式", store: "商店即将开放" }
+    hero: { eyebrow: "可追踪数字库存", title: "已验证的数字资产。", body: "We procure, validate and distribute traceable digital inventory", primary: "联系 Kaliplay", secondary: "Store", store: "" }
   },
   hi: {
-    meta: { title: "Kaliplay | डिजिटल एसेट मार्केटप्लेस", description: "Kaliplay दस्तावेज़ित डिजिटल एसेट्स को सत्यापित और वितरित करता है।" },
+    meta: { title: "Kaliplay | traceable digital inventory", description: "Kaliplay documented digital inventory को procure, validate और distribute करता है।" },
     nav: { home: "होम", store: "स्टोर", about: "विजन", compliance: "अनुपालन", contact: "संपर्क", terms: "शर्तें", privacy: "गोपनीयता" },
-    hero: { eyebrow: "डिजिटल एसेट मार्केटप्लेस", title: "सत्यापित डिजिटल एसेट्स।", body: "Kaliplay games, content, licenses, perks और अन्य दस्तावेज़ित डिजिटल goods को validate और distribute करता है।", primary: "स्टोर पर जाएं", secondary: "कैसे काम करता है", store: "स्टोर जल्द खुलेगा" }
+    hero: { eyebrow: "Traceable digital inventory", title: "सत्यापित डिजिटल एसेट्स।", body: "We procure, validate and distribute traceable digital inventory", primary: "Kaliplay से बात करें", secondary: "Store", store: "" }
   },
   es: {
-    meta: { title: "Kaliplay | Marketplace de activos digitales", description: "Kaliplay valida y distribuye activos digitales documentados con derechos, regiones y operación trazable." },
+    meta: { title: "Kaliplay | Inventario digital trazable", description: "Kaliplay procura, valida y distribuye inventario digital documentado con derechos, regiones, reglas de plataforma y operación trazable." },
     nav: { home: "Inicio", store: "Store", about: "Visión", compliance: "Compliance", contact: "Contacto", terms: "Términos", privacy: "Privacidad" },
-    hero: { eyebrow: "Marketplace de activos digitales", title: "Activos digitales verificados.", body: "Kaliplay compra, valida y distribuye inventario digital trazable: juegos, contenido, licencias, perks y otros bienes digitales documentados.", primary: "Ir al store", secondary: "Cómo funciona", store: "Store en construcción" },
-    mission: { title: "Nuestra misión es hacer el comercio de activos digitales más limpio, rápido y seguro.", body: "Kaliplay convierte supply digital desordenado en una operación controlada: fuentes verificadas, regiones transparentes, inventario auditable y entrega lista para clientes." },
-    cta: { title: "¿Proveedor, marketplace o partner de activos digitales?", body: "Hablemos sobre inventario documentado, distribución, compliance o account review.", email: "info@kaliplay.com" },
-    footer: "Kaliplay no vende cuentas ni usa prácticas engañosas de activación regional."
+    hero: { eyebrow: "Inventario digital trazable", title: "Activos digitales verificados.", body: "Procuramos, validamos y distribuimos inventario digital trazable", primary: "Hablar con Kaliplay", secondary: "Store", store: "" },
+    mission: { title: "Hacer el comercio de activos digitales más limpio, rápido y seguro.", body: "Kaliplay convierte supply digital fragmentado en una operación controlada: fuentes verificadas, regiones transparentes, inventario auditable y entrega lista para clientes." },
+    cta: { title: "Llevemos inventario documentado al mercado.", body: "Para proveedores, publishers, marketplaces y partners comerciales, Kaliplay revisa origen, derechos, regiones, pricing y readiness operativo antes de llevar inventario a compradores.", email: "info@kaliplay.com" },
+    footer: "Inventario digital documentado para distribución en marketplaces."
   },
   ar: {
-    meta: { title: "Kaliplay | سوق أصول رقمية", description: "Kaliplay يتحقق ويوزع أصولا رقمية موثقة مع حقوق ومناطق واضحة." },
+    meta: { title: "Kaliplay | مخزون رقمي قابل للتتبع", description: "Kaliplay يشتري ويتحقق ويوزع مخزونا رقميا موثقا مع حقوق ومناطق وقواعد منصة واضحة." },
     nav: { home: "الرئيسية", store: "المتجر", about: "الرؤية", compliance: "الامتثال", contact: "اتصال", terms: "الشروط", privacy: "الخصوصية" },
-    hero: { eyebrow: "سوق أصول رقمية", title: "أصول رقمية موثقة.", body: "Kaliplay يشتري ويتحقق ويوزع مخزونا رقميا قابلا للتتبع: ألعاب ومحتوى وتراخيص ومزايا وسلع رقمية موثقة.", primary: "اذهب إلى المتجر", secondary: "كيف يعمل", store: "المتجر قريبا" }
+    hero: { eyebrow: "مخزون رقمي قابل للتتبع", title: "أصول رقمية موثقة.", body: "We procure, validate and distribute traceable digital inventory", primary: "تواصل مع Kaliplay", secondary: "Store", store: "" }
   },
   fr: {
-    meta: { title: "Kaliplay | Marketplace d'actifs numériques", description: "Kaliplay valide et distribue des actifs numériques documentés avec droits, régions et traçabilité." },
+    meta: { title: "Kaliplay | Inventaire numérique traçable", description: "Kaliplay procure, valide et distribue un inventaire numérique documenté avec droits, régions, règles plateforme et traçabilité." },
     nav: { home: "Accueil", store: "Store", about: "Vision", compliance: "Conformité", contact: "Contact", terms: "Conditions", privacy: "Confidentialité" },
-    hero: { eyebrow: "Marketplace d'actifs numériques", title: "Actifs numériques vérifiés.", body: "Kaliplay achète, valide et distribue un inventaire numérique traçable : jeux, contenu, licences, perks et biens numériques documentés.", primary: "Aller au store", secondary: "Fonctionnement", store: "Store bientôt disponible" }
+    hero: { eyebrow: "Inventaire numérique traçable", title: "Actifs numériques vérifiés.", body: "We procure, validate and distribute traceable digital inventory", primary: "Contacter Kaliplay", secondary: "Store", store: "" }
   },
   bn: {
-    meta: { title: "Kaliplay | ডিজিটাল অ্যাসেট মার্কেটপ্লেস", description: "Kaliplay নথিভুক্ত ডিজিটাল অ্যাসেট যাচাই ও বিতরণ করে।" },
+    meta: { title: "Kaliplay | Traceable digital inventory", description: "Kaliplay documented digital inventory procure, validate এবং distribute করে।" },
     nav: { home: "হোম", store: "স্টোর", about: "ভিশন", compliance: "কমপ্লায়েন্স", contact: "যোগাযোগ", terms: "শর্তাবলি", privacy: "গোপনীয়তা" },
-    hero: { eyebrow: "ডিজিটাল অ্যাসেট মার্কেটপ্লেস", title: "যাচাইকৃত ডিজিটাল অ্যাসেট।", body: "Kaliplay games, content, licenses, perks এবং অন্যান্য নথিভুক্ত digital goods যাচাই ও বিতরণ করে।", primary: "স্টোরে যান", secondary: "কীভাবে কাজ করে", store: "স্টোর শীঘ্রই" }
+    hero: { eyebrow: "Traceable digital inventory", title: "যাচাইকৃত ডিজিটাল অ্যাসেট।", body: "We procure, validate and distribute traceable digital inventory", primary: "Kaliplay-এ কথা বলুন", secondary: "Store", store: "" }
   },
   pt: {
-    meta: { title: "Kaliplay | Marketplace de ativos digitais", description: "Kaliplay valida e distribui ativos digitais documentados com direitos, regiões e rastreabilidade." },
+    meta: { title: "Kaliplay | Inventário digital rastreável", description: "Kaliplay procura, valida e distribui inventário digital documentado com direitos, regiões, regras de plataforma e rastreabilidade." },
     nav: { home: "Início", store: "Store", about: "Visão", compliance: "Compliance", contact: "Contato", terms: "Termos", privacy: "Privacidade" },
-    hero: { eyebrow: "Marketplace de ativos digitais", title: "Ativos digitais verificados.", body: "Kaliplay compra, valida e distribui inventário digital rastreável: jogos, conteúdo, licenças, perks e outros bens digitais documentados.", primary: "Ir ao store", secondary: "Como funciona", store: "Store em construção" }
+    hero: { eyebrow: "Inventário digital rastreável", title: "Ativos digitais verificados.", body: "We procure, validate and distribute traceable digital inventory", primary: "Falar com Kaliplay", secondary: "Store", store: "" }
   },
   ru: {
-    meta: { title: "Kaliplay | Маркетплейс цифровых активов", description: "Kaliplay проверяет и распространяет документированные цифровые активы с правами, регионами и трассируемостью." },
+    meta: { title: "Kaliplay | Отслеживаемый цифровой инвентарь", description: "Kaliplay закупает, проверяет и распространяет документированный цифровой инвентарь с правами, регионами и правилами платформ." },
     nav: { home: "Главная", store: "Store", about: "Видение", compliance: "Комплаенс", contact: "Контакты", terms: "Условия", privacy: "Приватность" },
-    hero: { eyebrow: "Маркетплейс цифровых активов", title: "Проверенные цифровые активы.", body: "Kaliplay покупает, проверяет и распространяет цифровой инвентарь: игры, контент, лицензии, perks и другие документированные goods.", primary: "В store", secondary: "Как работает", store: "Store скоро" }
+    hero: { eyebrow: "Отслеживаемый цифровой инвентарь", title: "Проверенные цифровые активы.", body: "We procure, validate and distribute traceable digital inventory", primary: "Связаться с Kaliplay", secondary: "Store", store: "" }
   },
   id: {
-    meta: { title: "Kaliplay | Marketplace aset digital", description: "Kaliplay memvalidasi dan mendistribusikan aset digital terdokumentasi dengan hak, wilayah, dan jejak operasi jelas." },
+    meta: { title: "Kaliplay | Inventaris digital terlacak", description: "Kaliplay mengadakan, memvalidasi, dan mendistribusikan inventaris digital terdokumentasi dengan hak, wilayah, aturan platform, dan jejak operasi jelas." },
     nav: { home: "Beranda", store: "Store", about: "Visi", compliance: "Kepatuhan", contact: "Kontak", terms: "Syarat", privacy: "Privasi" },
-    hero: { eyebrow: "Marketplace aset digital", title: "Aset digital terverifikasi.", body: "Kaliplay membeli, memvalidasi, dan mendistribusikan inventaris digital: game, konten, lisensi, perks, dan digital goods terdokumentasi.", primary: "Ke store", secondary: "Cara kerja", store: "Store segera hadir" }
+    hero: { eyebrow: "Inventaris digital terlacak", title: "Aset digital terverifikasi.", body: "We procure, validate and distribute traceable digital inventory", primary: "Hubungi Kaliplay", secondary: "Store", store: "" }
   }
 };
 
@@ -190,11 +170,7 @@ function merge(locale: Locale): HomeCopy {
     ...partial,
     nav: { ...en.nav, ...partial.nav },
     hero: { ...en.hero, ...partial.hero },
-    stats: partial.stats || en.stats,
-    marquee: partial.marquee || en.marquee,
     mission: { ...en.mission, ...partial.mission },
-    pillars: partial.pillars || en.pillars,
-    flow: partial.flow || en.flow,
     cta: { ...en.cta, ...partial.cta },
     pages: {
       ...en.pages,

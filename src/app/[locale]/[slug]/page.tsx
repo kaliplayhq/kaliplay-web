@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { InfoPage } from "@/components/InfoPage";
+import { StoreGate } from "@/components/StoreGate";
 import { getCopy, isLocale, locales, pageSlugs, type Locale, type PageSlug } from "@/i18n";
 
 type PageProps = {
@@ -23,6 +24,10 @@ export default async function Page({ params }: PageProps) {
 
   const locale: Locale = resolved.locale;
   const text = getCopy(locale);
+
+  if (resolved.slug === "store") {
+    return <StoreGate locale={locale} copy={text} />;
+  }
 
   return <InfoPage locale={locale} copy={text} page={resolved.slug} />;
 }

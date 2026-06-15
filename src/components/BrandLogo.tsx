@@ -10,17 +10,17 @@ const logo = {
   isotype: {
     alt: "",
     sizes: "96px",
-    src: "/brand/kaliplay-isotype-color.svg"
+    src: "/brand/kaliplay-isotype-white.svg"
   },
   lockupHorizontal: {
     alt: "Kaliplay",
-    sizes: "(min-width: 640px) 210px, 170px",
-    src: "/brand/kaliplay-lockup-horizontal-light.svg"
+    sizes: "(min-width: 640px) 260px, 190px",
+    src: "/brand/kaliplay-lockup-horizontal-dark.svg"
   },
   lockupVertical: {
     alt: "Kaliplay",
-    sizes: "(min-width: 640px) 230px, 180px",
-    src: "/brand/kaliplay-lockup-vertical-light.svg"
+    sizes: "(min-width: 1024px) 330px, (min-width: 640px) 290px, 220px",
+    src: "/brand/kaliplay-lockup-vertical-dark.svg"
   }
 };
 

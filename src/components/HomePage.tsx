@@ -3,17 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  BadgeCheck,
-  CircuitBoard,
   Coins,
-  Flame,
   Gem,
   KeyRound,
+  Mail,
   MonitorCog,
   Music2,
-  Play,
   Puzzle,
-  Radar,
   ShieldCheck,
   ShoppingCart,
   Sparkles,
@@ -33,22 +29,22 @@ type HomePageProps = {
 export function HomePage({ locale, copy }: HomePageProps) {
   const [spot, setSpot] = useState({ x: "54%", y: "30%" });
   const assetCards = [
-    { icon: KeyRound, title: "Game serials", body: "documented PC keys" },
-    { icon: Puzzle, title: "DLC packs", body: "expansions + add-ons" },
-    { icon: Sparkles, title: "Skins", body: "publisher-permitted" },
-    { icon: Coins, title: "Top-ups", body: "approved credits" },
-    { icon: MonitorCog, title: "Software", body: "invoice-backed licenses" },
-    { icon: Ticket, title: "Perks", body: "redeemable codes" },
-    { icon: Gem, title: "Collectibles", body: "rights-reviewed assets" },
-    { icon: Music2, title: "Content drops", body: "soundtracks + extras" },
-    { icon: Trophy, title: "Passes", body: "season access codes" },
-    { icon: ShieldCheck, title: "Verified lots", body: "auditable supply" }
+    { code: "KEY", icon: KeyRound, title: "Game serials", body: "documented PC keys", detail: "Invoice-backed origin, region clarity, and replacement policy before listing." },
+    { code: "DLC", icon: Puzzle, title: "DLC packs", body: "expansions + add-ons", detail: "Add-on inventory reviewed against platform, publisher, and activation rules." },
+    { code: "SKN", icon: Sparkles, title: "Skins", body: "publisher-permitted", detail: "Cosmetic assets only where transfer, resale, and delivery rules are explicit." },
+    { code: "TOP", icon: Coins, title: "Top-ups", body: "approval required", detail: "Credit-like inventory stays gated until supplier rights and tax treatment are clear." },
+    { code: "LIC", icon: MonitorCog, title: "Tool licenses", body: "approved B2B licenses", detail: "Only documented licenses with commercial resale permission; no dubious office keys." },
+    { code: "PRK", icon: Ticket, title: "Perks", body: "redeemable codes", detail: "Promotional or benefit codes need source proof, limits, and supportable redemption." },
+    { code: "COL", icon: Gem, title: "Collectibles", body: "rights-reviewed assets", detail: "Digital collectibles stay rights-first, with no crypto checkout in this phase." },
+    { code: "DRP", icon: Music2, title: "Content drops", body: "soundtracks + extras", detail: "Bonus content is checked for ownership, platform terms, and customer delivery." },
+    { code: "PAS", icon: Trophy, title: "Passes", body: "season access codes", detail: "Passes require clear duration, region, entitlement, and refund handling." },
+    { code: "LOT", icon: ShieldCheck, title: "Verified lots", body: "auditable supply", detail: "Small batches, traceable records, and review before capital is committed." }
   ];
 
   return (
     <SiteFrame locale={locale} copy={copy}>
       <section
-        className="magnetic-glow relative isolate min-h-screen px-4 pb-20 pt-28 sm:px-6 lg:pt-32"
+        className="magnetic-glow relative isolate min-h-screen px-4 pb-20 pt-32 sm:px-6 lg:pt-36"
         style={{ "--x": spot.x, "--y": spot.y } as React.CSSProperties}
         onPointerMove={(event) => {
           const rect = event.currentTarget.getBoundingClientRect();
@@ -70,65 +66,30 @@ export function HomePage({ locale, copy }: HomePageProps) {
         </div>
 
         <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl items-center justify-center text-center">
-          <div className="hero-copy-panel reveal relative z-10 mx-auto max-w-5xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-[8px] border border-ember/70 bg-black/35 px-3 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-flare shadow-glow backdrop-blur-md">
-              <Flame size={16} />
-              {copy.hero.eyebrow}
-            </div>
-            <BrandLogo variant="lockupVertical" className="hero-lockup mx-auto mb-6 h-48 w-44 sm:h-56 sm:w-52" priority />
+          <div className="hero-copy-panel reveal relative z-10 mx-auto max-w-6xl">
+            <BrandLogo variant="lockupVertical" className="hero-lockup mx-auto mb-6 h-60 w-52 sm:h-72 sm:w-64 lg:h-80 lg:w-72" priority />
             <h1 className="sr-only">Kaliplay</h1>
-            <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-bone sm:text-5xl">
+            <h2 className="mx-auto mt-4 max-w-5xl text-5xl font-semibold leading-[0.9] tracking-[-0.06em] text-bone sm:text-7xl lg:text-8xl">
               {copy.hero.title}
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-8 text-bone/92 sm:text-xl">{copy.hero.body}</p>
+            <p className="mx-auto mt-6 max-w-3xl text-xl font-medium leading-8 text-bone/92 sm:text-2xl">{copy.hero.body}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
-                href={`/${locale}/store`}
+                href={`/${locale}/contact`}
                 className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:scale-[1.02] hover:bg-flare"
               >
                 {copy.hero.primary}
-                <ShoppingCart size={18} className="transition group-hover:translate-x-1" />
+                <Mail size={18} className="transition group-hover:translate-x-1" />
               </Link>
               <Link
-                href={`/${locale}/about`}
+                href={`/${locale}/store`}
                 className="inline-flex items-center justify-center rounded-[8px] border border-pulse/50 bg-pulse/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-bone shadow-cyan transition hover:bg-pulse/20"
               >
                 {copy.hero.secondary}
+                <ShoppingCart size={18} className="ml-2" />
               </Link>
             </div>
-            <div className="mt-4 text-sm font-semibold uppercase tracking-[0.18em] text-flare">{copy.hero.store}</div>
           </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 overflow-hidden border-y border-white/10 bg-black/25 py-10 backdrop-blur-md">
-        <div className="mx-auto mb-7 flex max-w-7xl items-end justify-between gap-6 px-5">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-flare">Digital assets</div>
-            <h2 className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-bone sm:text-5xl">Inventory we can validate.</h2>
-          </div>
-          <p className="hidden max-w-sm text-sm leading-6 text-bone/58 md:block">
-            Every category depends on documented origin, resale permission, region clarity, and platform rules.
-          </p>
-        </div>
-        <div className="deck-track flex w-max gap-4 px-5">
-          {assetCards.concat(assetCards).map((card, index) => {
-            const Icon = card.icon;
-            return (
-              <div key={`${card.title}-${index}`} className="asset-card group">
-                <div className="flex items-start justify-between">
-                  <span className="asset-icon">
-                    <Icon size={30} />
-                  </span>
-                  <span className="play-chip">
-                    <Play size={14} fill="currentColor" />
-                  </span>
-                </div>
-                <div className="mt-9 text-2xl font-semibold tracking-[-0.045em] text-bone">{card.title}</div>
-                <div className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-bone/56">{card.body}</div>
-              </div>
-            );
-          })}
         </div>
       </section>
 
@@ -142,64 +103,55 @@ export function HomePage({ locale, copy }: HomePageProps) {
         </div>
       </section>
 
-      <section className="relative z-10 px-4 py-24 sm:px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 flex items-end justify-between gap-6">
-            <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.05em] text-bone sm:text-6xl">Source. Validate. Distribute.</h2>
-            <Sparkles className="hidden text-flare md:block" size={42} />
+      <section className="relative z-10 overflow-hidden border-y border-white/10 bg-black/45 py-20">
+        <div className="mx-auto mb-10 flex max-w-7xl items-end justify-between gap-6 px-5">
+          <div>
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-flare">Digital inventory</div>
+            <h2 className="mt-2 max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-6xl">Inventory we can validate.</h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {copy.pillars.map((pillar, index) => {
-              const icons = [ShieldCheck, Radar, CircuitBoard];
-              const Icon = icons[index] || BadgeCheck;
-
-              return (
-                <article key={pillar.title} className="group rounded-[8px] border border-white/10 bg-carbon/80 p-6 transition hover:-translate-y-1 hover:border-ember/70 hover:shadow-glow">
-                  <Icon className="mb-8 text-flare transition group-hover:text-pulse" size={34} />
-                  <h3 className="text-2xl font-semibold tracking-[-0.04em] text-bone">{pillar.title}</h3>
-                  <p className="mt-4 leading-7 text-bone/62">{pillar.body}</p>
-                </article>
-              );
-            })}
-          </div>
+          <p className="hidden max-w-md text-sm leading-6 text-bone/62 md:block">
+            Every category depends on documented origin, resale permission, region clarity, platform rules, and supportable delivery.
+          </p>
         </div>
-      </section>
-
-      <section className="relative z-10 overflow-hidden py-12">
-        <div className="process-track flex w-max gap-4 px-4">
-          {copy.flow.concat(copy.flow).map((item, index) => (
-            <div key={`${item.step}-${index}`} className="w-72 rounded-[8px] border border-pulse/30 bg-pulse/10 p-5 shadow-cyan">
-              <div className="mb-8 text-xs font-semibold tracking-[0.16em] text-pulse">{item.step}</div>
-              <h3 className="text-2xl font-semibold tracking-[-0.04em] text-bone">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-bone/62">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative z-10 px-4 py-24 sm:px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="rounded-[8px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,77,0,0.16),rgba(0,229,255,0.08),rgba(255,255,255,0.03))] p-4 shadow-2xl sm:p-8">
-            <div className="grid gap-4 md:grid-cols-3">
-              {copy.flow.map((item) => (
-                <div key={item.step} className="rounded-[8px] border border-white/10 bg-black/35 p-6">
-                  <div className="mb-12 text-sm font-semibold tracking-[0.16em] text-pulse">{item.step}</div>
-                  <h3 className="text-3xl font-semibold tracking-[-0.05em] text-bone">{item.title}</h3>
-                  <p className="mt-4 leading-7 text-bone/62">{item.body}</p>
+        <div className="deck-track flex w-max gap-5 px-5">
+          {assetCards.concat(assetCards).map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <article key={`${card.title}-${index}`} className="asset-card group" tabIndex={0} aria-label={`${card.title}: ${card.body}`}>
+                <div className="asset-card-inner">
+                  <div className="asset-face asset-face-front">
+                    <div className="flex items-start justify-between gap-5">
+                      <span className="asset-icon" aria-hidden="true">
+                        <span className="asset-reel">
+                          <Icon size={40} strokeWidth={1.6} />
+                          <span className="asset-code">{card.code}</span>
+                          <Icon size={40} strokeWidth={1.6} />
+                        </span>
+                      </span>
+                      <span className="asset-grade">Verified</span>
+                    </div>
+                    <div className="mt-9 text-3xl font-semibold tracking-[-0.05em] text-bone">{card.title}</div>
+                    <div className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-bone/62">{card.body}</div>
+                  </div>
+                  <div className="asset-face asset-face-back">
+                    <div className="text-xs font-semibold uppercase tracking-[0.24em] text-pulse">Review gate</div>
+                    <div className="mt-6 text-2xl font-semibold tracking-[-0.045em] text-bone">{card.title}</div>
+                    <p className="mt-4 text-sm leading-6 text-bone/72">{card.detail}</p>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
-        <div className="mx-auto max-w-7xl rounded-[8px] border border-ember/40 bg-[radial-gradient(circle_at_50%_0%,rgba(255,77,0,0.32),rgba(3,3,3,0.96)_58%)] p-8 text-center shadow-glow sm:p-16">
+        <div className="cta-panel mx-auto max-w-7xl rounded-[8px] p-8 text-center sm:p-16">
           <h2 className="mx-auto max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-bone sm:text-6xl">{copy.cta.title}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-bone/68">{copy.cta.body}</p>
           <a
             href={`mailto:${copy.cta.email}`}
-            className="mt-8 inline-flex items-center justify-center rounded-[8px] bg-bone px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop transition hover:scale-[1.02] hover:bg-flare"
+            className="mt-8 inline-flex items-center justify-center rounded-[8px] border border-ember/70 bg-ember px-6 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:scale-[1.02] hover:bg-flare hover:shadow-cyan"
           >
             {copy.cta.email}
           </a>
