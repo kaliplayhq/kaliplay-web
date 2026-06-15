@@ -1,5 +1,75 @@
-// Brand glyph paths (simple-icons, 24x24 viewBox). Monochrome via currentColor.
+// Brand glyph paths (simple-icons, 24x24 viewBox). Rendered in official brand color via brandColor().
 export type BrandIcon = { name: string; path: string };
+
+// Official brand colors (simple-icons). adobe/nintendo/primevideo use canonical brand hex.
+const brandHex: Record<string, string> = {
+  steam: "#000000",
+  epicgames: "#313131",
+  playstation: "#0070D1",
+  battledotnet: "#4381C3",
+  ubisoft: "#000000",
+  ea: "#000000",
+  adobe: "#FF0000",
+  autodesk: "#000000",
+  jetbrains: "#000000",
+  norton: "#FFE01A",
+  nintendo: "#E60012",
+  razer: "#00FF00",
+  googleplay: "#414141",
+  netflix: "#E50914",
+  spotify: "#1ED760",
+  discord: "#5865F2",
+  primevideo: "#00A8E1",
+  roblox: "#000000",
+  twitch: "#9146FF",
+  youtube: "#FF0000",
+  opensea: "#2081E2",
+  ethereum: "#3C3C3D",
+  udemy: "#A435F0",
+  coursera: "#0056D2",
+  namecheap: "#DE3723",
+  cloudflare: "#F38020",
+  nordvpn: "#4687FF",
+  surfshark: "#1EBFBF"
+};
+
+// Lift only dark brands (blacks/grays/very-dark blues) to a readable lightness on the
+// dark card bg; vivid mid-tones (Netflix red, Spotify green, ...) keep their exact color.
+export function brandColor(slug: string): string {
+  const hex = brandHex[slug] ?? "#f7f7f5";
+  const n = parseInt(hex.slice(1), 16);
+  let r = ((n >> 16) & 255) / 255;
+  let g = ((n >> 8) & 255) / 255;
+  let b = (n & 255) / 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let l = (max + min) / 2;
+  if (l >= 0.45) return hex;
+
+  const d = max - min;
+  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  let h = 0;
+  if (d !== 0) {
+    if (max === r) h = ((g - b) / d) % 6;
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h = h * 60;
+    if (h < 0) h += 360;
+  }
+
+  l = 0.6;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
+  if (h < 60) [r, g, b] = [c, x, 0];
+  else if (h < 120) [r, g, b] = [x, c, 0];
+  else if (h < 180) [r, g, b] = [0, c, x];
+  else if (h < 240) [r, g, b] = [0, x, c];
+  else if (h < 300) [r, g, b] = [x, 0, c];
+  else [r, g, b] = [c, 0, x];
+  const to = (v: number) => Math.round((v + m) * 255).toString(16).padStart(2, "0");
+  return `#${to(r)}${to(g)}${to(b)}`;
+}
 
 export const brandIcons: Record<string, BrandIcon> = {
   steam: { name: "Steam", path: "M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z" },

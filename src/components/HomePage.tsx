@@ -7,7 +7,7 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactRequestForm } from "@/components/ContactRequestForm";
 import { SiteFrame } from "@/components/SiteFrame";
-import { brandIcons } from "@/components/brandIcons";
+import { brandColor, brandIcons } from "@/components/brandIcons";
 import type { AssetCode, HomeCopy, Locale } from "@/i18n";
 
 type HomePageProps = {
@@ -100,7 +100,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
                     {card.brands.map((b) => (
                       <svg key={b} className="asset-brand" viewBox="0 0 24 24" role="img" aria-label={brandIcons[b].name}>
                         <title>{brandIcons[b].name}</title>
-                        <path d={brandIcons[b].path} fill="currentColor" />
+                        <path d={brandIcons[b].path} fill={brandColor(b)} />
                       </svg>
                     ))}
                   </div>
