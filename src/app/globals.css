@@ -150,14 +150,16 @@ a {
 .asset-card::before {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 11px;
+  inset: -6px;
+  border-radius: 13px;
   background:
-    radial-gradient(circle at 50% 38%, rgba(230, 254, 255, 0.96), transparent 66%),
-    linear-gradient(180deg, #2ae8ff, #00c4f2);
-  opacity: 0.45;
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.98), rgba(196, 250, 255, 0.92) 24%, rgba(70, 228, 255, 0.55) 52%, transparent 74%),
+    linear-gradient(180deg, #adf7ff, #1fdcff);
+  opacity: 0.5;
   z-index: 0;
-  box-shadow: 0 0 34px rgba(0, 229, 255, 0.6);
+  box-shadow:
+    0 0 42px rgba(150, 244, 255, 0.72),
+    0 0 84px rgba(0, 216, 255, 0.5);
   transition: opacity 0.55s ease, box-shadow 0.55s ease;
 }
 
@@ -165,30 +167,43 @@ a {
 .asset-card:focus::before,
 .asset-card:focus-visible::before {
   opacity: 1;
-  box-shadow: 0 0 56px rgba(0, 229, 255, 0.92);
+  box-shadow:
+    0 0 64px rgba(190, 250, 255, 0.98),
+    0 0 130px rgba(0, 226, 255, 0.72),
+    0 0 200px rgba(0, 200, 255, 0.42);
 }
 
 /* neon-tube frame inspired by the isotype ring (orange -> white -> cyan) */
+/* lit orange neon tube bent into a square frame around the card */
 .asset-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  padding: 2.5px;
-  background: linear-gradient(180deg, #ffb24d 0%, #ff6a14 22%, #ffdaa6 44%, #ffffff 50%, #cff7ff 56%, #18e2ff 74%, #7df3ff 100%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  border-radius: 10px;
+  border: 2.5px solid #ffdcb0;
   pointer-events: none;
   z-index: 4;
-  filter: drop-shadow(0 0 5px rgba(255, 120, 0, 0.5)) drop-shadow(0 0 9px rgba(0, 229, 255, 0.55));
-  transition: filter 0.5s ease;
+  box-shadow:
+    0 0 4px rgba(255, 174, 76, 0.95),
+    0 0 11px rgba(255, 122, 24, 0.9),
+    0 0 22px rgba(255, 92, 0, 0.8),
+    0 0 42px rgba(255, 80, 0, 0.55),
+    inset 0 0 6px rgba(255, 184, 96, 0.92),
+    inset 0 0 16px rgba(255, 112, 22, 0.55);
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
 .asset-card:hover::after,
 .asset-card:focus::after,
 .asset-card:focus-visible::after {
-  filter: drop-shadow(0 0 8px rgba(255, 120, 0, 0.72)) drop-shadow(0 0 17px rgba(0, 229, 255, 0.85));
+  border-color: #fff1de;
+  box-shadow:
+    0 0 6px rgba(255, 194, 104, 1),
+    0 0 16px rgba(255, 132, 32, 0.96),
+    0 0 32px rgba(255, 96, 0, 0.9),
+    0 0 64px rgba(255, 80, 0, 0.66),
+    inset 0 0 8px rgba(255, 202, 122, 1),
+    inset 0 0 24px rgba(255, 120, 30, 0.6);
 }
 
 .asset-card-inner {
@@ -275,88 +290,50 @@ a {
     0 0 44px rgba(0, 229, 255, 0.44);
 }
 
+/* holographic gold verification seal */
 .asset-medal {
-  display: inline-grid;
-  place-items: center;
   position: relative;
-  width: 86px;
-  height: 86px;
-  overflow: hidden;
-  border-radius: 999px;
-  border: 1.5px solid rgba(255, 245, 198, 0.92);
-  color: #3a2300;
-  background:
-    radial-gradient(circle at 33% 25%, rgba(255, 253, 236, 0.98) 0 8%, rgba(255, 233, 162, 0.55) 22%, transparent 42%),
-    radial-gradient(circle at 60% 70%, #ffea90 0 15%, #ecbb55 40%, #b5812c 68%, #7c5212 86%, #f3d684 100%);
-  font-size: 0.6rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-  box-shadow:
-    0 0 18px rgba(255, 206, 92, 0.6),
-    0 6px 16px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1.5px rgba(120, 72, 8, 0.34),
-    inset 0 2px 5px rgba(255, 255, 255, 0.6),
-    inset 0 -7px 13px rgba(110, 62, 0, 0.4);
-  transform: rotate(4deg);
-  isolation: isolate;
+  width: 78px;
+  height: 78px;
+  transform: rotate(3deg);
+  filter:
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 14px rgba(255, 198, 92, 0.6));
 }
 
-.asset-medal::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border-radius: inherit;
-  border: 1.5px solid rgba(92, 54, 0, 0.4);
-  box-shadow:
-    0 0 0 1px rgba(255, 246, 190, 0.5),
-    inset 0 1px 2px rgba(255, 255, 255, 0.42);
-  z-index: 1;
+.asset-seal {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.asset-medal::marker {
-  display: none;
-}
-
-.asset-medal::after {
-  content: "";
-  position: absolute;
-  top: -28%;
-  left: -28%;
-  width: 156%;
-  height: 156%;
-  border-radius: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 43%,
-    rgba(255, 255, 255, 0.12) 47%,
-    rgba(255, 255, 255, 0.98) 50%,
-    rgba(255, 255, 255, 0.12) 53%,
-    transparent 57%
-  );
-  transform: translateX(-120%) rotate(8deg);
-  animation: medal-shine 3.4s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+.seal-holo {
   mix-blend-mode: screen;
-  z-index: 2;
+  opacity: 0.55;
+  animation: seal-holo 4.6s ease-in-out infinite;
 }
 
-.asset-medal-core {
-  position: absolute;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  white-space: nowrap;
-  font-size: 0.5rem;
+.seal-shine {
+  mix-blend-mode: screen;
+}
+
+.seal-text {
+  fill: #5a3a06;
+  font-size: 7.4px;
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: #3a2300;
-  text-shadow:
-    0 1px 0 rgba(255, 248, 196, 0.72),
-    0 -1px 0 rgba(120, 70, 0, 0.4);
+}
+
+@keyframes seal-holo {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .asset-visual {
@@ -757,17 +734,6 @@ a {
 .party-option[aria-selected="true"] {
   background: linear-gradient(135deg, rgba(255, 42, 0, 0.18), rgba(0, 229, 255, 0.08));
   color: #f7f7f5;
-}
-
-@keyframes medal-shine {
-  0%,
-  40% {
-    transform: translateX(-120%) rotate(8deg);
-  }
-  70%,
-  100% {
-    transform: translateX(120%) rotate(8deg);
-  }
 }
 
 @keyframes arrow-scan {
