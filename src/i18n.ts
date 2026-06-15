@@ -127,7 +127,7 @@ const en: HomeCopy = {
       EVT: { title: "eSports & Event Access", body: "tickets, meet-and-greets", detail: "Digital tickets, virtual meet-and-greets, and event access require verified issuer rights, clear date constraints, and supportable delivery." },
       ART: { title: "Digital Art & Collectibles", body: "verified, traceable editions", detail: "Limited digital art and NFT-linked collectibles only when provenance, rights, edition limits, and blockchain proof are traceable." },
       EDU: { title: "E-learning & E-books", body: "courses, books, audiobooks", detail: "Udemy, Coursera, MasterClass vouchers, DRM-free e-books, audiobooks, and license transfers reviewed before distribution." },
-      WEB: { title: "Domains & Cloud Assets", body: "domains, storage upgrades", detail: "Clean-transfer domain names plus Dropbox, Google Drive, and iCloud upgrades, verified for ownership, transfer path, and account safety." }
+      WEB: { title: "Domains & VPN Keys", body: "domains, VPN, security", detail: "Transferable domain names plus VPN and security subscription keys, verified for ownership transfer, region, and redemption before listing." }
     },
     workflow: [
       { kicker: "Source intake", title: "Documented origin", body: "Supplier identity, invoice path, ownership proof, replacement policy, and category risk are recorded before capital is committed." },
@@ -345,7 +345,7 @@ const es: Translation = {
       EVT: { title: "eSports y acceso a eventos", body: "entradas, meet-and-greets", detail: "Entradas digitales, meet-and-greets virtuales y acceso a eventos requieren derechos verificados del emisor, fechas claras y entrega sostenible." },
       ART: { title: "Arte digital y coleccionables", body: "ediciones verificadas y trazables", detail: "Arte digital limitado y coleccionables ligados a NFT solo cuando la procedencia, los derechos, el límite de edición y la prueba en blockchain son trazables." },
       EDU: { title: "E-learning y e-books", body: "cursos, libros, audiolibros", detail: "Vouchers de Udemy, Coursera, MasterClass, e-books sin DRM, audiolibros y transferencias de licencia revisados antes de distribuir." },
-      WEB: { title: "Dominios y activos cloud", body: "dominios, mejoras de storage", detail: "Dominios de transferencia limpia más mejoras de Dropbox, Google Drive e iCloud, verificados por titularidad, vía de transferencia y seguridad de la cuenta." }
+      WEB: { title: "Dominios y claves VPN", body: "dominios, VPN, seguridad", detail: "Nombres de dominio transferibles más claves de VPN y seguridad, verificados por transferencia de titularidad, región y canje antes de publicar." }
     },
     workflow: [
       { kicker: "Ingreso de origen", title: "Origen documentado", body: "Identidad del proveedor, vía de factura, prueba de titularidad, política de reemplazo y riesgo de categoría se registran antes de comprometer capital." },
@@ -444,7 +444,7 @@ const pt: Translation = {
       EVT: { title: "eSports e acesso a eventos", body: "ingressos, meet-and-greets", detail: "Ingressos digitais, meet-and-greets virtuais e acesso a eventos exigem direitos verificados do emissor, datas claras e entrega comprovável." },
       ART: { title: "Arte digital e colecionáveis", body: "edições verificadas e rastreáveis", detail: "Arte digital limitada e colecionáveis ligados a NFT apenas quando proveniência, direitos, limite de edição e prova em blockchain forem rastreáveis." },
       EDU: { title: "E-learning e e-books", body: "cursos, livros, audiolivros", detail: "Vouchers de Udemy, Coursera, MasterClass, e-books sem DRM, audiolivros e transferências de licença revisados antes da distribuição." },
-      WEB: { title: "Domínios e ativos cloud", body: "domínios, upgrades de armazenamento", detail: "Domínios com transferência limpa mais upgrades de Dropbox, Google Drive e iCloud, verificados por titularidade, caminho de transferência e segurança da conta." }
+      WEB: { title: "Domínios e chaves VPN", body: "domínios, VPN, segurança", detail: "Nomes de domínio transferíveis mais chaves de VPN e segurança, verificados por titularidade, região e resgate antes da publicação." }
     },
     workflow: [
       { kicker: "Entrada de origem", title: "Origem documentada", body: "Identidade do fornecedor, caminho da nota fiscal, prova de titularidade, política de reposição e risco de categoria são registrados antes de comprometer capital." },

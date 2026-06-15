@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactRequestForm } from "@/components/ContactRequestForm";
 import { SiteFrame } from "@/components/SiteFrame";
+import { brandIcons } from "@/components/brandIcons";
 import type { AssetCode, HomeCopy, Locale } from "@/i18n";
 
 type HomePageProps = {
@@ -16,17 +17,17 @@ type HomePageProps = {
 
 export function HomePage({ locale, copy }: HomePageProps) {
   const [spot, setSpot] = useState({ x: "54%", y: "30%" });
-  const assetLayout: { code: AssetCode; theme: string; visual: string }[] = [
-    { code: "KEY", theme: "games", visual: "STEAM / EPIC" },
-    { code: "DLC", theme: "dlc", visual: "EXPANSION" },
-    { code: "OS", theme: "software", visual: "LICENSE" },
-    { code: "GFT", theme: "gift", visual: "VOUCHER" },
-    { code: "SUB", theme: "sub", visual: "ACCESS" },
-    { code: "COIN", theme: "currency", visual: "POINTS" },
-    { code: "EVT", theme: "event", visual: "LIVE" },
-    { code: "ART", theme: "art", visual: "PROOF" },
-    { code: "EDU", theme: "edu", visual: "LEARN" },
-    { code: "WEB", theme: "web", visual: "CLOUD" }
+  const assetLayout: { code: AssetCode; theme: string; brands: string[] }[] = [
+    { code: "KEY", theme: "games", brands: ["steam", "epicgames", "playstation", "battledotnet"] },
+    { code: "DLC", theme: "dlc", brands: ["steam", "ubisoft", "ea", "epicgames"] },
+    { code: "OS", theme: "software", brands: ["adobe", "autodesk", "jetbrains", "norton"] },
+    { code: "GFT", theme: "gift", brands: ["playstation", "nintendo", "razer", "googleplay"] },
+    { code: "SUB", theme: "sub", brands: ["netflix", "spotify", "discord", "primevideo"] },
+    { code: "COIN", theme: "currency", brands: ["roblox", "epicgames", "ea"] },
+    { code: "EVT", theme: "event", brands: ["twitch", "youtube"] },
+    { code: "ART", theme: "art", brands: ["opensea", "ethereum"] },
+    { code: "EDU", theme: "edu", brands: ["udemy", "coursera"] },
+    { code: "WEB", theme: "web", brands: ["namecheap", "cloudflare", "nordvpn", "surfshark"] }
   ];
   const assetCards = assetLayout.map((card) => ({ ...card, ...copy.home.assets[card.code] }));
   const workflowSteps = copy.home.workflow;
@@ -95,8 +96,13 @@ export function HomePage({ locale, copy }: HomePageProps) {
                       <span className="asset-medal-core">{copy.home.verified}</span>
                     </span>
                   </div>
-                  <div className="asset-visual" aria-hidden="true">
-                    <span>{card.visual}</span>
+                  <div className="asset-visual" aria-label={`Compatible brands: ${card.brands.map((b) => brandIcons[b].name).join(", ")}`}>
+                    {card.brands.map((b) => (
+                      <svg key={b} className="asset-brand" viewBox="0 0 24 24" role="img" aria-label={brandIcons[b].name}>
+                        <title>{brandIcons[b].name}</title>
+                        <path d={brandIcons[b].path} fill="currentColor" />
+                      </svg>
+                    ))}
                   </div>
                   <div className="mt-6 text-3xl font-semibold tracking-[-0.05em] text-bone">{card.title}</div>
                   <div className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-bone/68">{card.body}</div>
