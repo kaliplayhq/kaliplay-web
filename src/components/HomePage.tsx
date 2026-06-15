@@ -140,19 +140,26 @@ export function HomePage({ locale, copy }: HomePageProps) {
                 </div>
                 {index < workflowSteps.length - 1 ? (
                   <div className="workflow-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-3 -2 122 82" xmlns="http://www.w3.org/2000/svg">
                       <defs>
-                        <linearGradient id="wfArrow" x1="22" y1="2" x2="22" y2="50" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#ff9a2e" />
-                          <stop offset="0.55" stopColor="#ff2a00" />
-                          <stop offset="1" stopColor="#bf1400" />
+                        <linearGradient id="wfFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0" stopColor="#ff9214" />
+                          <stop offset="0.58" stopColor="#ff2a00" />
+                          <stop offset="1" stopColor="#b81200" />
                         </linearGradient>
+                        <clipPath id="wfClip">
+                          <path d="M34 0 H82 Q88 0 88 6 V34 H112 Q118 34 114 40 L64 74 Q58 78 52 74 L2 40 Q-2 34 4 34 H28 V6 Q28 0 34 0 Z" />
+                        </clipPath>
                       </defs>
+                      <g clipPath="url(#wfClip)">
+                        <rect x="-3" y="-2" width="122" height="82" fill="url(#wfFill)" />
+                        <rect className="wf-shine" x="-30" y="-2" width="26" height="82" fill="rgba(255,255,255,0.85)" />
+                      </g>
                       <path
-                        d="M18 4 H26 a2 2 0 0 1 2 2 V26 H38 a2 2 0 0 1 1.5 3.3 L23.6 47 a2.2 2.2 0 0 1-3.2 0 L4.5 29.3 A2 2 0 0 1 6 26 H16 V6 a2 2 0 0 1 2-2 Z"
-                        fill="url(#wfArrow)"
-                        stroke="rgba(255,228,188,0.92)"
-                        strokeWidth="1.4"
+                        d="M34 0 H82 Q88 0 88 6 V34 H112 Q118 34 114 40 L64 74 Q58 78 52 74 L2 40 Q-2 34 4 34 H28 V6 Q28 0 34 0 Z"
+                        fill="none"
+                        stroke="#ffe0b0"
+                        strokeWidth="2.4"
                         strokeLinejoin="round"
                       />
                     </svg>
