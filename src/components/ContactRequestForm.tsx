@@ -4,11 +4,15 @@ import { ChevronDown, Send } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { getCopy, type Locale } from "@/i18n";
 
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+
 type ContactRequestFormProps = {
   locale: Locale;
   emailTo?: string;
   subjectPrefix?: string;
 };
+
+type Status = "idle" | "sending" | "success" | "error";
 
 export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request" }: ContactRequestFormProps) {
   const text = getCopy(locale).form;
@@ -16,15 +20,48 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
   const [party, setParty] = useState(partyTypes[0]);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  function submitRequest(event: FormEvent<HTMLFormElement>) {
+  async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const subject = encodeURIComponent(`${subjectPrefix} - ${party}`);
-    const body = encodeURIComponent(`Party type: ${party}\nEmail: ${email}\n\nMessage:\n${message}`);
-    setSent(true);
-    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+
+    // Fallback to mailto while no backend endpoint is configured.
+    if (!FORMSPREE_ENDPOINT) {
+      const subject = encodeURIComponent(`${subjectPrefix} - ${party}`);
+      const body = encodeURIComponent(`Party type: ${party}\nEmail: ${email}\n\nMessage:\n${message}`);
+      setStatus("success");
+      window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          party,
+          email,
+          message,
+          _replyto: email,
+          _subject: `${subjectPrefix} - ${party}`
+        })
+      });
+      if (response.ok) {
+        setStatus("success");
+        setParty(partyTypes[0]);
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
+
+  const sending = status === "sending";
+  const successText = FORMSPREE_ENDPOINT ? text.success : text.prepared;
 
   return (
     <form className="contact-form grid gap-4" onSubmit={submitRequest}>
@@ -65,11 +102,20 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
         />
       </label>
 
-      <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare">
-        {text.send}
+      <button
+        type="submit"
+        disabled={sending}
+        className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-ember px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-blacktop shadow-glow transition hover:bg-flare disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {sending ? text.sending : text.send}
         <Send size={18} />
       </button>
-      {sent ? <div className="rounded-[8px] border border-pulse/40 bg-pulse/10 px-4 py-3 text-sm font-semibold text-pulse">{text.prepared}</div> : null}
+      {status === "success" ? (
+        <div className="rounded-[8px] border border-pulse/40 bg-pulse/10 px-4 py-3 text-sm font-semibold text-pulse">{successText}</div>
+      ) : null}
+      {status === "error" ? (
+        <div className="rounded-[8px] border border-ember/40 bg-ember/10 px-4 py-3 text-sm font-semibold text-flare">{text.error}</div>
+      ) : null}
     </form>
   );
 }

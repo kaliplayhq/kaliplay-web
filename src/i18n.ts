@@ -37,6 +37,9 @@ type FormCopy = {
   message: string;
   messagePlaceholder: string;
   send: string;
+  sending: string;
+  success: string;
+  error: string;
   prepared: string;
   parties: string[];
 };
@@ -147,6 +150,9 @@ const en: HomeCopy = {
     message: "Message",
     messagePlaceholder: "Tell us what inventory, access, partnership, or review you need.",
     send: "Send request",
+    sending: "Sending…",
+    success: "Request sent. We'll get back to you soon.",
+    error: "Something went wrong. Please email info@kaliplay.com.",
     prepared: "Request prepared. Your email client should open to send it to info@kaliplay.com.",
     parties: ["Supplier", "Publisher", "Marketplace", "Digital asset partner", "Buyer", "Other"]
   },
@@ -368,6 +374,9 @@ const es: Translation = {
     message: "Mensaje",
     messagePlaceholder: "Contanos qué inventario, acceso, alianza o revisión necesitás.",
     send: "Enviar consulta",
+    sending: "Enviando…",
+    success: "Consulta enviada. Te respondemos pronto.",
+    error: "Algo salió mal. Escribinos a info@kaliplay.com.",
     prepared: "Consulta preparada. Tu cliente de email debería abrirse para enviarla a info@kaliplay.com.",
     parties: ["Proveedor", "Publisher", "Marketplace", "Partner de activos digitales", "Comprador", "Otro"]
   },
@@ -470,6 +479,9 @@ const pt: Translation = {
     message: "Mensagem",
     messagePlaceholder: "Conte qual inventário, acesso, parceria ou revisão você precisa.",
     send: "Enviar pedido",
+    sending: "Enviando…",
+    success: "Pedido enviado. Em breve respondemos.",
+    error: "Algo deu errado. Escreva para info@kaliplay.com.",
     prepared: "Pedido preparado. Seu cliente de email deve abrir para enviá-lo a info@kaliplay.com.",
     parties: ["Fornecedor", "Publisher", "Marketplace", "Parceiro de ativos digitais", "Comprador", "Outro"]
   },
