@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, ShoppingCart } from "lucide-react";
-import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactRequestForm } from "@/components/ContactRequestForm";
 import { SiteFrame } from "@/components/SiteFrame";
@@ -16,7 +15,6 @@ type HomePageProps = {
 };
 
 export function HomePage({ locale, copy }: HomePageProps) {
-  const [spot, setSpot] = useState({ x: "54%", y: "30%" });
   const assetLayout: { code: AssetCode; theme: string; brands: string[] }[] = [
     { code: "KEY", theme: "games", brands: ["steam", "epicgames", "playstation", "battledotnet"] },
     { code: "DLC", theme: "dlc", brands: ["steam", "ubisoft", "ea", "epicgames"] },
@@ -36,13 +34,13 @@ export function HomePage({ locale, copy }: HomePageProps) {
     <SiteFrame locale={locale} copy={copy}>
       <section
         className="magnetic-glow relative isolate min-h-screen px-4 pb-28 pt-32 sm:px-6 lg:pt-36"
-        style={{ "--x": spot.x, "--y": spot.y } as React.CSSProperties}
+        style={{ "--x": "54%", "--y": "30%" } as React.CSSProperties}
         onPointerMove={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect();
-          setSpot({
-            x: `${((event.clientX - rect.left) / rect.width) * 100}%`,
-            y: `${((event.clientY - rect.top) / rect.height) * 100}%`
-          });
+          if (event.pointerType !== "mouse") return;
+          const el = event.currentTarget;
+          const rect = el.getBoundingClientRect();
+          el.style.setProperty("--x", `${((event.clientX - rect.left) / rect.width) * 100}%`);
+          el.style.setProperty("--y", `${((event.clientY - rect.top) / rect.height) * 100}%`);
         }}
       >
         <div className="absolute inset-0 -z-20">

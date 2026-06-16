@@ -820,3 +820,42 @@ a {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* iOS Safari stability: phones have a tiny per-tab memory/GPU budget, so strip the
+   sustained-cost effects (blended animated shine layers, live backdrop blur, dozens of
+   stacked drop-shadows, full-screen blended overlays) that crash the WebContent process. */
+@media (max-width: 768px) {
+  /* 40 continuously-animated mix-blend-mode shine layers across the carousel */
+  .asset-face-front::before,
+  .asset-face-back::before {
+    display: none;
+  }
+
+  /* live backdrop blur is very expensive on iOS; use the solid panel bg instead */
+  .hero-copy-panel,
+  .mission-panel,
+  .workflow-copy,
+  .store-modal,
+  .store-gate-panel {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  /* 80 per-glyph drop-shadows (4 logos x 20 cards) compositing inside the moving marquee */
+  .asset-brand {
+    filter: none;
+  }
+
+  /* lighter neon tube: a single glow pass instead of five */
+  .asset-card::after {
+    box-shadow:
+      0 0 6px rgba(255, 106, 20, 0.9),
+      inset 0 0 8px rgba(255, 106, 20, 0.45);
+  }
+
+  /* full-screen blended overlays */
+  .noise,
+  .scanline {
+    display: none;
+  }
+}
