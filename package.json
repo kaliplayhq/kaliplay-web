@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",

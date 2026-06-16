@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { dir, getCopy, isLocale, locales, type Locale } from "@/i18n";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -59,6 +60,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <div className="noise" />
         <div className="scanline" />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
