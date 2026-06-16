@@ -84,7 +84,7 @@ export function HomePage({ locale, copy }: HomePageProps) {
         </div>
       </section>
 
-      <section className="asset-deck-section relative z-20 -mt-14 overflow-hidden border-y border-ember/40 bg-black/60 py-8">
+      <section className="asset-deck-section relative z-20 -mt-14 overflow-hidden border-y border-ember/40 py-8">
         <div className="deck-track flex w-max gap-5 px-5">
           {assetCards.concat(assetCards).map((card, index) => (
             <article key={`${card.title}-${index}`} className={`asset-card asset-${card.theme} group`} tabIndex={0} aria-label={`${card.title}: ${card.body}`}>
