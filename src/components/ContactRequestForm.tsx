@@ -11,11 +11,12 @@ type ContactRequestFormProps = {
   emailTo?: string;
   subjectPrefix?: string;
   large?: boolean;
+  showTitle?: boolean;
 };
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request", large = false }: ContactRequestFormProps) {
+export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subjectPrefix = "Kaliplay contact request", large = false, showTitle = true }: ContactRequestFormProps) {
   const text = getCopy(locale).form;
   const partyTypes = text.parties;
   const [party, setParty] = useState(partyTypes[0]);
@@ -76,7 +77,7 @@ export function ContactRequestForm({ locale, emailTo = "info@kaliplay.com", subj
 
   return (
     <form className="contact-form grid gap-4" onSubmit={submitRequest}>
-      <h2 className={`font-semibold tracking-[-0.05em] text-bone ${large ? "text-center text-4xl sm:text-5xl" : "text-3xl"}`}>{text.title}</h2>
+      {showTitle ? <h2 className={`font-semibold tracking-[-0.05em] text-bone ${large ? "text-center text-4xl sm:text-5xl" : "text-3xl"}`}>{text.title}</h2> : null}
       <div className="grid gap-2 text-sm font-semibold text-bone/72">
         <span id="party-label">{text.party}</span>
         <div ref={partyRef} className="party-dropdown" data-open={partyOpen} onKeyDown={(event) => event.key === "Escape" && setPartyOpen(false)}>

@@ -32,7 +32,7 @@ export function InfoPage({ locale, copy, page }: InfoPageProps) {
 
             {page === "contact" ? (
               <div className="contact-panel mt-10 rounded-[8px] p-5">
-                <ContactRequestForm locale={locale} />
+                <ContactRequestForm locale={locale} showTitle={false} />
               </div>
             ) : null}
 

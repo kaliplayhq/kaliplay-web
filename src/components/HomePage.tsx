@@ -197,12 +197,12 @@ export function HomePage({ locale, copy }: HomePageProps) {
 
       <section className="relative z-10 px-4 py-24 sm:px-6">
         <div className="cta-panel mx-auto max-w-3xl p-8 text-center sm:p-14">
-          <div className="cta-kicker">{copy.pages.contact.eyebrow}</div>
-          <p className="mx-auto mt-3 max-w-xl text-lg leading-8 text-bone/68">
+          <h2 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.06em] text-bone sm:text-6xl">{copy.pages.contact.title}</h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-bone/68">
             {copy.pages.contact.body}
           </p>
           <div className="contact-panel mx-auto mt-9 max-w-xl rounded-[16px] p-6 text-left sm:p-7">
-            <ContactRequestForm locale={locale} large />
+            <ContactRequestForm locale={locale} showTitle={false} />
           </div>
         </div>
       </section>
