@@ -84,16 +84,44 @@ export function HomePage({ locale, copy }: HomePageProps) {
         </div>
       </section>
 
-      <section className="asset-deck-section relative z-20 -mt-14 overflow-hidden border-y border-ember/40 py-8">
-        <div className="deck-track flex w-max gap-5 px-5">
+      <section className="asset-deck-section relative z-20 -mt-14 overflow-hidden py-10">
+        <div className="deck-track flex w-max gap-10 px-6">
           {assetCards.concat(assetCards).map((card, index) => (
             <article key={`${card.title}-${index}`} className={`asset-card asset-${card.theme} group`} tabIndex={0} aria-label={`${card.title}: ${card.body}`}>
               <div className="asset-card-inner">
                 <div className="asset-face asset-face-front">
                   <div className="flex items-start justify-between gap-5">
                     <span className="asset-code">{card.code}</span>
-                    <span className="asset-medal" aria-label={copy.home.verified}>
-                      <Image className="asset-seal" src="/verified-seal.png" alt="" width={96} height={96} aria-hidden="true" />
+                    <span className="asset-medal" aria-label={`Kaliplay ${copy.home.verified}`}>
+                      <svg className="asset-seal" viewBox="0 0 100 100" aria-hidden="true">
+                        <defs>
+                          <radialGradient id="sealGold" cx="42%" cy="34%" r="72%">
+                            <stop offset="0%" stopColor="#fff3cf" />
+                            <stop offset="34%" stopColor="#ffe08f" />
+                            <stop offset="62%" stopColor="#eebf52" />
+                            <stop offset="84%" stopColor="#c9912f" />
+                            <stop offset="100%" stopColor="#8c5e16" />
+                          </radialGradient>
+                          <radialGradient id="sealCore" cx="44%" cy="32%" r="70%">
+                            <stop offset="0%" stopColor="#fff8e0" />
+                            <stop offset="55%" stopColor="#ffdc88" />
+                            <stop offset="100%" stopColor="#d59e3f" />
+                          </radialGradient>
+                        </defs>
+                        <path
+                          d="M 50 2 L 55.29 9.85 L 62.42 3.64 L 65.5 12.58 L 74 8.43 L 74.65 17.87 L 83.94 16.06 L 82.13 25.35 L 91.57 26 L 87.42 34.5 L 96.36 37.58 L 90.15 44.71 L 98 50 L 90.15 55.29 L 96.36 62.42 L 87.42 65.5 L 91.57 74 L 82.13 74.65 L 83.94 83.94 L 74.65 82.13 L 74 91.57 L 65.5 87.42 L 62.42 96.36 L 55.29 90.15 L 50 98 L 44.71 90.15 L 37.58 96.36 L 34.5 87.42 L 26 91.57 L 25.35 82.13 L 16.06 83.94 L 17.87 74.65 L 8.43 74 L 12.58 65.5 L 3.64 62.42 L 9.85 55.29 L 2 50 L 9.85 44.71 L 3.64 37.58 L 12.58 34.5 L 8.43 26 L 17.87 25.35 L 16.06 16.06 L 25.35 17.87 L 26 8.43 L 34.5 12.58 L 37.58 3.64 L 44.71 9.85 Z"
+                          fill="url(#sealGold)"
+                          stroke="#7a5214"
+                          strokeWidth="1"
+                          strokeLinejoin="round"
+                        />
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(120,78,18,0.5)" strokeWidth="1.2" />
+                        <circle cx="50" cy="50" r="35" fill="url(#sealCore)" stroke="rgba(255,247,205,0.7)" strokeWidth="0.8" />
+                        <circle cx="50" cy="50" r="32.5" fill="none" stroke="rgba(120,78,18,0.3)" strokeWidth="0.6" />
+                        <path d="M45.5 28.5 L45.5 40.5 L57 34.5 Z" fill="#6b4406" />
+                        <text className="seal-kali" x="50" y="56" textAnchor="middle">KALIPLAY</text>
+                        <text className="seal-verified" x="50" y="67" textAnchor="middle">{copy.home.verified}</text>
+                      </svg>
                     </span>
                   </div>
                   <div className="asset-visual" aria-label={`Compatible brands: ${card.brands.map((b) => brandIcons[b].name).join(", ")}`}>

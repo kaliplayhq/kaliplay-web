@@ -121,14 +121,9 @@ a {
 }
 
 /* carousel rides a powerful white light strip, revealed behind the cards on flip */
+/* no visible strip; the only light is each card's own white bloom on flip */
 .asset-deck-section {
-  background:
-    linear-gradient(180deg, #050507 0%, rgba(5, 5, 7, 0) 9%, rgba(5, 5, 7, 0) 91%, #050507 100%),
-    radial-gradient(150% 84% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.98) 42%, rgba(228, 246, 255, 0.62) 67%, rgba(255, 255, 255, 0) 87%);
-  box-shadow:
-    0 0 120px rgba(255, 255, 255, 0.62),
-    0 -12px 80px rgba(214, 244, 255, 0.46),
-    0 28px 96px rgba(255, 255, 255, 0.46);
+  background: transparent;
 }
 
 .deck-track {
@@ -150,51 +145,44 @@ a {
   perspective: 1200px;
 }
 
-/* full white glare panel behind the card; the card spins over it on flip */
+/* white light bloom revealed behind a card only while it flips (hover) */
 .asset-card::before {
   content: "";
   position: absolute;
   inset: -14px;
   border-radius: 18px;
-  background:
-    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 1) 0 34%, rgba(255, 255, 255, 0.96) 46%, rgba(245, 255, 255, 0.72) 62%, transparent 82%),
-    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.82) 34%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.82) 66%, transparent 100%);
-  opacity: 0.72;
+  background: radial-gradient(circle at 50% 48%, #ffffff 0 34%, rgba(255, 255, 255, 0.96) 46%, rgba(245, 255, 255, 0.72) 62%, transparent 82%);
+  opacity: 0;
   z-index: 0;
   box-shadow:
-    0 0 64px rgba(255, 255, 255, 1),
-    0 0 135px rgba(255, 255, 255, 0.9),
-    0 0 245px rgba(230, 255, 255, 0.68);
-  transition: opacity 0.55s ease, box-shadow 0.55s ease;
+    0 0 80px rgba(255, 255, 255, 1),
+    0 0 170px rgba(255, 255, 255, 0.92),
+    0 0 290px rgba(235, 255, 255, 0.72);
+  transition: opacity 0.5s ease;
 }
 
 .asset-card:hover::before,
 .asset-card:focus::before,
 .asset-card:focus-visible::before {
   opacity: 1;
-  box-shadow:
-    0 0 92px rgba(255, 255, 255, 1),
-    0 0 190px rgba(255, 255, 255, 1),
-    0 0 320px rgba(245, 255, 255, 0.86);
 }
 
-/* neon-tube frame inspired by the isotype ring (orange -> white -> cyan) */
-/* lit orange neon tube bent into a square frame around the card */
+/* lit orange neon tube (isotype #ff6a14) bent into a square frame around the card */
 .asset-card::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 10px;
-  border: 2.5px solid #ffdcb0;
+  border: 2.5px solid #ffd9a8;
   pointer-events: none;
   z-index: 4;
   box-shadow:
-    0 0 4px rgba(255, 174, 76, 0.95),
-    0 0 11px rgba(255, 122, 24, 0.9),
-    0 0 22px rgba(255, 92, 0, 0.8),
-    0 0 42px rgba(255, 80, 0, 0.55),
-    inset 0 0 6px rgba(255, 184, 96, 0.92),
-    inset 0 0 16px rgba(255, 112, 22, 0.55);
+    0 0 3px #ffb24d,
+    0 0 7px rgba(255, 106, 20, 0.95),
+    0 0 14px rgba(255, 106, 20, 0.65),
+    0 0 24px rgba(232, 60, 4, 0.4),
+    inset 0 0 5px rgba(255, 178, 77, 0.9),
+    inset 0 0 12px rgba(255, 106, 20, 0.5);
   transition: box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
@@ -203,12 +191,12 @@ a {
 .asset-card:focus-visible::after {
   border-color: #fff1de;
   box-shadow:
-    0 0 6px rgba(255, 194, 104, 1),
-    0 0 16px rgba(255, 132, 32, 0.96),
-    0 0 32px rgba(255, 96, 0, 0.9),
-    0 0 64px rgba(255, 80, 0, 0.66),
-    inset 0 0 8px rgba(255, 202, 122, 1),
-    inset 0 0 24px rgba(255, 120, 30, 0.6);
+    0 0 4px #ffc46b,
+    0 0 10px rgba(255, 106, 20, 1),
+    0 0 20px rgba(255, 106, 20, 0.8),
+    0 0 36px rgba(232, 60, 4, 0.5),
+    inset 0 0 7px rgba(255, 196, 107, 1),
+    inset 0 0 18px rgba(255, 120, 30, 0.55);
 }
 
 .asset-card-inner {
@@ -255,10 +243,7 @@ a {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.28), transparent 58%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(0deg, rgba(0, 229, 255, 0.08) 0 1px, transparent 1px 12px);
+  background: linear-gradient(115deg, transparent 0 38%, rgba(255, 255, 255, 0.3), transparent 60%);
   mix-blend-mode: screen;
   transform: translateX(-120%);
   animation: shine 2.6s ease-in-out infinite;
@@ -297,21 +282,35 @@ a {
 
 .asset-medal {
   position: relative;
-  width: 80px;
-  height: 80px;
-  transform: rotate(3deg);
+  width: 84px;
+  height: 84px;
+  transform: rotate(-2deg);
   filter:
     drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5))
     drop-shadow(0 0 16px rgba(255, 208, 96, 0.92))
-    drop-shadow(0 0 36px rgba(255, 176, 44, 0.5));
+    drop-shadow(0 0 34px rgba(255, 176, 44, 0.5));
 }
 
 .asset-seal {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: brightness(1.18) saturate(1.16) contrast(1.05);
+  overflow: visible;
+}
+
+.seal-kali {
+  fill: #5e3d05;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.seal-verified {
+  fill: #6b4810;
+  font-size: 6.6px;
+  font-weight: 800;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
 }
 
 .asset-visual {
