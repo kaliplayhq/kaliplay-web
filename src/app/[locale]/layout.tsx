@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { dir, getCopy, isLocale, locales, type Locale } from "@/i18n";
+import { dir, getCopy, hreflang, isLocale, locales, ogLocale, type Locale } from "@/i18n";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 type LayoutProps = {
@@ -21,6 +21,13 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     title: text.meta.title,
     description: text.meta.description,
     metadataBase: new URL("https://kaliplay.com"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [hreflang[l], `/${l}`])),
+        "x-default": "/en"
+      }
+    },
     icons: {
       icon: [
         { url: "/favicon.ico" },
@@ -38,7 +45,8 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       url: `/${locale}`,
       siteName: "Kaliplay",
       images: [{ url: "/hero-digital-assets-v3.png", width: 1600, height: 900, alt: "Kaliplay digital assets marketplace visual" }],
-      locale,
+      locale: ogLocale[locale],
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => ogLocale[l]),
       type: "website"
     },
     twitter: {
@@ -55,7 +63,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const locale: Locale = isLocale(resolved.locale) ? resolved.locale : "en";
 
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={hreflang[locale]} dir={dir(locale)}>
       <body>
         <div className="noise" />
         <div className="scanline" />

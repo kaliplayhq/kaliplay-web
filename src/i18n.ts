@@ -1,4 +1,4 @@
-export const locales = ["en", "es", "pt"] as const;
+export const locales = ["en", "es", "pt", "fr", "zh", "ko", "ru"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -7,7 +7,33 @@ export const defaultLocale: Locale = "en";
 export const languages: Record<Locale, string> = {
   en: "English",
   es: "Español",
-  pt: "Português"
+  pt: "Português",
+  fr: "Français",
+  zh: "中文",
+  ko: "한국어",
+  ru: "Русский"
+};
+
+// BCP-47 tags for <html lang> and hreflang SEO annotations.
+export const hreflang: Record<Locale, string> = {
+  en: "en",
+  es: "es",
+  pt: "pt-BR",
+  fr: "fr",
+  zh: "zh-Hans",
+  ko: "ko",
+  ru: "ru"
+};
+
+// Open Graph locale codes.
+export const ogLocale: Record<Locale, string> = {
+  en: "en_US",
+  es: "es_ES",
+  pt: "pt_BR",
+  fr: "fr_FR",
+  zh: "zh_CN",
+  ko: "ko_KR",
+  ru: "ru_RU"
 };
 
 export const pageSlugs = ["store", "about", "compliance", "contact", "terms", "privacy"] as const;
@@ -505,7 +531,403 @@ const pt: Translation = {
   }
 };
 
-const translations: Record<Exclude<Locale, "en">, Translation> = { es, pt };
+const fr: Translation = {
+  meta: {
+    title: "Kaliplay | Inventaire numérique traçable",
+    description: "Kaliplay sélectionne, valide et distribue un inventaire numérique documenté avec droits, régions, règles de plateforme et traçabilité opérationnelle."
+  },
+  nav: { home: "Accueil", store: "Boutique", about: "Vision", compliance: "Conformité", contact: "Contact", terms: "Conditions", privacy: "Confidentialité" },
+  hero: {
+    eyebrow: "Inventaire numérique traçable",
+    title: "Actifs numériques vérifiés.",
+    body: "Nous sélectionnons, validons et distribuons un inventaire numérique traçable",
+    primary: "Contacter Kaliplay",
+    secondary: "Boutique",
+    store: ""
+  },
+  mission: {
+    lead: "Rendre le commerce d’actifs numériques",
+    adjectives: ["Plus clair", "Plus rapide", "Plus sûr"],
+    body: "Kaliplay transforme une offre numérique fragmentée en une opération de distribution contrôlée : sources vérifiées, régions transparentes, inventaire auditable et livraison prête pour le client."
+  },
+  footer: "Inventaire numérique documenté pour la distribution sur les marketplaces.",
+  home: {
+    missionLabel: "Mission",
+    verified: "Vérifié",
+    inventory: {
+      kicker: "Inventaire numérique",
+      heading: "Un inventaire que nous pouvons valider.",
+      body: "Chaque catégorie suit le même parcours de contrôle avant que Kaliplay ne la traite comme un inventaire distribuable."
+    },
+    assets: {
+      KEY: { title: "Clés de jeux PC et console", body: "Steam, Epic, EA, Ubisoft", detail: "Clés de jeux documentées pour PC et console, avec origine appuyée par facture, clarté de région et conditions de remplacement avant la mise en vente." },
+      DLC: { title: "DLC et extensions", body: "add-ons, passes, extensions", detail: "Contenus téléchargeables, passes saisonniers et extensions vérifiés selon les règles d’éditeur, de plateforme, de région et de droits." },
+      OS: { title: "Logiciels et licences d’OS", body: "Windows, Office, outils", detail: "Windows, Office, antivirus, Adobe, Corel et outils de design uniquement lorsque l’autorisation du fournisseur, les factures et les droits de revente sont justifiables." },
+      GFT: { title: "Cartes-cadeaux et bons", body: "PSN, Xbox, Nintendo, Razer", detail: "Bons PlayStation, Xbox, Nintendo, Razer Gold, iTunes et Google Play filtrés par source, région, risque de fraude et politique d’utilisation." },
+      SUB: { title: "Recharges d’abonnement", body: "streaming, gaming, cloud", detail: "Netflix, Spotify, Discord Nitro, Amazon Prime, Game Pass et upgrades cloud vérifiés selon la source, le territoire et les contraintes d’activation." },
+      COIN: { title: "Monnaie et biens in-game", body: "V-Bucks, Robux, points", detail: "V-Bucks, Robux, COD Points, FIFA Points, gemmes, skins et emotes uniquement lorsque le transfert, les règles de plateforme et la livraison sont explicites." },
+      EVT: { title: "eSports et accès aux événements", body: "billets, meet-and-greets", detail: "Billets numériques, meet-and-greets virtuels et accès aux événements exigent des droits d’émetteur vérifiés, des dates claires et une livraison justifiable." },
+      ART: { title: "Art numérique et objets de collection", body: "éditions vérifiées et traçables", detail: "Art numérique en édition limitée et objets de collection liés aux NFT uniquement lorsque la provenance, les droits, les limites d’édition et la preuve blockchain sont traçables." },
+      EDU: { title: "E-learning et e-books", body: "cours, livres, audiolivres", detail: "Bons Udemy, Coursera, MasterClass, e-books sans DRM, audiolivres et transferts de licence vérifiés avant la distribution." },
+      WEB: { title: "Domaines et clés VPN", body: "domaines, VPN, sécurité", detail: "Noms de domaine transférables ainsi que clés VPN et de sécurité, vérifiés pour le transfert de propriété, la région et l’utilisation avant la mise en vente." }
+    },
+    workflow: [
+      { kicker: "Réception des sources", title: "Origine documentée", body: "Identité du fournisseur, traçabilité de facture, preuve de propriété, politique de remplacement et risque de catégorie sont enregistrés avant d’engager des capitaux." },
+      { kicker: "Filtre de validation", title: "Revue des droits, de la région et de la plateforme", body: "Autorisation de revente, territoire d’activation, contraintes d’utilisation, exposition à la fraude et risque de support sont vérifiés avant la publication." },
+      { kicker: "Mise en circulation contrôlée", title: "Lot prêt pour la distribution", body: "Seul un inventaire traçable, avec livraison, prix, notes de support et piste d’audit clairs, peut avancer vers les acheteurs." }
+    ]
+  },
+  form: {
+    title: "Parlez-nous de votre entreprise.",
+    party: "Type de partie",
+    email: "E-mail",
+    emailPlaceholder: "nom@entreprise.com",
+    message: "Message",
+    messagePlaceholder: "Dites-nous de quel inventaire, accès, partenariat ou revue vous avez besoin.",
+    send: "Envoyer",
+    sending: "Envoi…",
+    success: "Demande envoyée. Nous reviendrons vers vous bientôt.",
+    error: "Une erreur s’est produite. Écrivez-nous à info@kaliplay.com.",
+    prepared: "Demande préparée. Votre client e-mail devrait s’ouvrir pour l’envoyer à info@kaliplay.com.",
+    parties: ["Fournisseur", "Éditeur", "Marketplace", "Partenaire d’actifs numériques", "Acheteur", "Autre"]
+  },
+  storeGate: {
+    badge: "Accès à la boutique",
+    heading: "Connectez-vous à Kaliplay Store.",
+    registered: "Déjà inscrit ?",
+    email: "E-mail",
+    emailPlaceholder: "nom@entreprise.com",
+    password: "Mot de passe",
+    passwordPlaceholder: "Mot de passe",
+    invalid: "Identifiants invalides.",
+    login: "Connexion",
+    needAccess: "Besoin d’un accès ?",
+    needAccessBody: "Demandez un accès en tant que fournisseur, marketplace, partenaire ou acheteur.",
+    request: "Demander un accès",
+    requestEyebrow: "Demander un accès",
+    close: "Fermer"
+  },
+  pages: {
+    store: { eyebrow: "Boutique", title: "Kaliplay Store.", body: "Connectez-vous ou demandez un accès.", bullets: [] },
+    about: {
+      eyebrow: "Vision",
+      title: "Une couche de confiance pour la distribution d’actifs numériques.",
+      body: "Kaliplay exploite une marketplace contrôlée pour des biens numériques documentés : registres d’origine clairs, droits validés, règles d’activation transparentes et voies de livraison fiables.",
+      bullets: ["Au-delà des jeux : logiciels, bons, recharges, objets de collection, cours, domaines et autres actifs numériques documentés.", "Une offre traçable avant de passer à l’échelle.", "Feuille de route : boutique, système d’administration et intelligence tarifaire."]
+    },
+    compliance: {
+      eyebrow: "Conformité",
+      title: "Des droits clairs. Une offre documentée. Une livraison contrôlée.",
+      body: "Chaque catégorie d’actif doit disposer d’une origine documentée, d’une autorisation de revente ou d’une voie commerciale claire, d’une clarté de région/plateforme et d’une livraison justifiable.",
+      bullets: ["Vérifications de facture et d’origine.", "Validation de région, de plateforme et de droits.", "Revue manuelle avant l’achat ou la publication."]
+    },
+    contact: {
+      eyebrow: "Contact",
+      title: "Contactez-nous.",
+      body: "Fournisseurs, marketplaces, éditeurs, partenaires et acheteurs peuvent utiliser ce formulaire pour des questions d’inventaire, d’accès, de partenariat ou de conformité.",
+      bullets: []
+    }
+  }
+};
+
+const zh: Translation = {
+  meta: {
+    title: "Kaliplay | 可追溯的数字库存",
+    description: "Kaliplay 采购、验证并分发有据可查的数字库存，涵盖权利、地区、平台规则与可追溯的运营。"
+  },
+  nav: { home: "首页", store: "商店", about: "愿景", compliance: "合规", contact: "联系", terms: "条款", privacy: "隐私" },
+  hero: {
+    eyebrow: "可追溯的数字库存",
+    title: "经过验证的数字资产。",
+    body: "我们采购、验证并分发可追溯的数字库存",
+    primary: "联系 Kaliplay",
+    secondary: "商店",
+    store: ""
+  },
+  mission: {
+    lead: "让数字资产交易",
+    adjectives: ["更清晰", "更快速", "更安全"],
+    body: "Kaliplay 将碎片化的数字供给转化为受控的分发运营：经过验证的来源、透明的地区、可审计的库存，以及可直接交付给客户的服务。"
+  },
+  footer: "面向交易市场分发的、有据可查的数字库存。",
+  home: {
+    missionLabel: "使命",
+    verified: "已验证",
+    inventory: {
+      kicker: "数字库存",
+      heading: "我们能够验证的库存。",
+      body: "在 Kaliplay 将其视为可分发库存之前，每个类别都要经过同样的管控流程。"
+    },
+    assets: {
+      KEY: { title: "PC 与主机游戏密钥", body: "Steam, Epic, EA, Ubisoft", detail: "面向 PC 与主机平台的有据可查的游戏密钥，上架前具备发票支持的来源、清晰的地区与更换条款。" },
+      DLC: { title: "DLC 与扩展包", body: "附加内容、通行证、扩展", detail: "可下载内容、季票与扩展包，依据发行商、平台、地区与授权规则进行审核。" },
+      OS: { title: "软件与操作系统许可证", body: "Windows、Office、工具", detail: "仅在供应商授权、发票与转售权可被证实时，提供 Windows、Office、杀毒软件、Adobe、Corel 与设计工具。" },
+      GFT: { title: "礼品卡与代金券", body: "PSN, Xbox, Nintendo, Razer", detail: "PlayStation、Xbox、Nintendo、Razer Gold、iTunes 与 Google Play 代金券，按来源、地区、欺诈风险与兑换政策进行管控。" },
+      SUB: { title: "订阅充值", body: "流媒体、游戏、云服务", detail: "Netflix、Spotify、Discord Nitro、Amazon Prime、Game Pass 与云服务升级，按来源、区域与激活限制审核。" },
+      COIN: { title: "游戏内货币与物品", body: "V-Bucks、Robux、点数", detail: "V-Bucks、Robux、COD 点数、FIFA 点数、宝石、皮肤与表情，仅在转移、平台规则与交付明确时提供。" },
+      EVT: { title: "电竞与活动门票", body: "门票、见面会", detail: "数字门票、线上见面会与活动门票需具备经过验证的发行方权利、明确的日期限制与可保障的交付。" },
+      ART: { title: "数字艺术与收藏品", body: "经验证、可追溯的版本", detail: "限量数字艺术与关联 NFT 的收藏品，仅在出处、权利、版本数量与区块链证明可追溯时提供。" },
+      EDU: { title: "在线学习与电子书", body: "课程、书籍、有声书", detail: "Udemy、Coursera、MasterClass 代金券，无 DRM 电子书、有声书与许可证转让，在分发前进行审核。" },
+      WEB: { title: "域名与 VPN 密钥", body: "域名、VPN、安全", detail: "可转让的域名以及 VPN 与安全订阅密钥，上架前就所有权转移、地区与兑换进行验证。" }
+    },
+    workflow: [
+      { kicker: "来源接入", title: "有据可查的来源", body: "在投入资金之前，记录供应商身份、发票路径、所有权证明、更换政策与类别风险。" },
+      { kicker: "验证关卡", title: "权利、地区与平台审核", body: "在发布之前，检查转售许可、激活地区、兑换限制、欺诈风险与支持风险。" },
+      { kicker: "受控发布", title: "可分发批次", body: "只有具备清晰交付、定价、支持说明与审计记录的可追溯库存，才能流向买家。" }
+    ]
+  },
+  form: {
+    title: "介绍一下您的业务。",
+    party: "参与方类型",
+    email: "电子邮箱",
+    emailPlaceholder: "name@company.com",
+    message: "留言",
+    messagePlaceholder: "告诉我们您需要的库存、访问权限、合作或审核。",
+    send: "发送",
+    sending: "发送中…",
+    success: "请求已发送。我们会尽快回复您。",
+    error: "出现了问题。请发送邮件至 info@kaliplay.com。",
+    prepared: "请求已准备好。您的邮件客户端应会打开，并发送至 info@kaliplay.com。",
+    parties: ["供应商", "发行商", "交易市场", "数字资产合作伙伴", "买家", "其他"]
+  },
+  storeGate: {
+    badge: "商店登录",
+    heading: "登录 Kaliplay Store。",
+    registered: "已经注册？",
+    email: "电子邮箱",
+    emailPlaceholder: "name@company.com",
+    password: "密码",
+    passwordPlaceholder: "密码",
+    invalid: "凭据无效。",
+    login: "登录",
+    needAccess: "需要访问权限？",
+    needAccessBody: "以供应商、交易市场、合作伙伴或买家身份申请访问权限。",
+    request: "申请访问",
+    requestEyebrow: "申请访问",
+    close: "关闭"
+  },
+  pages: {
+    store: { eyebrow: "商店", title: "Kaliplay Store.", body: "登录或申请访问权限。", bullets: [] },
+    about: {
+      eyebrow: "愿景",
+      title: "数字资产分发的可信层。",
+      body: "Kaliplay 运营一个面向有据可查数字商品的受控交易市场：清晰的来源记录、经过验证的权利、透明的激活规则与可靠的交付路径。",
+      bullets: ["不止于游戏：软件、代金券、充值、收藏品、课程、域名及其他有据可查的数字资产。", "在规模化之前实现可追溯的供给。", "店面、管理系统与定价情报路线图。"]
+    },
+    compliance: {
+      eyebrow: "合规",
+      title: "清晰的权利。有据可查的供给。受控的交付。",
+      body: "每个资产类别都必须具备有据可查的来源、清晰的转售许可或商业路径、明确的地区/平台以及可保障的交付。",
+      bullets: ["发票与来源核查。", "地区、平台与权利验证。", "购买或发布前进行人工审核。"]
+    },
+    contact: {
+      eyebrow: "联系",
+      title: "与我们联系。",
+      body: "供应商、交易市场、发行商、合作伙伴与买家均可使用此表单提交库存、访问、合作或合规相关的问题。",
+      bullets: []
+    }
+  }
+};
+
+const ko: Translation = {
+  meta: {
+    title: "Kaliplay | 추적 가능한 디지털 인벤토리",
+    description: "Kaliplay는 권리, 지역, 플랫폼 규칙과 추적 가능한 운영을 갖춘, 문서화된 디지털 인벤토리를 조달·검증·유통합니다."
+  },
+  nav: { home: "홈", store: "스토어", about: "비전", compliance: "컴플라이언스", contact: "문의", terms: "약관", privacy: "개인정보" },
+  hero: {
+    eyebrow: "추적 가능한 디지털 인벤토리",
+    title: "검증된 디지털 자산.",
+    body: "추적 가능한 디지털 인벤토리를 조달·검증·유통합니다",
+    primary: "Kaliplay에 문의",
+    secondary: "스토어",
+    store: ""
+  },
+  mission: {
+    lead: "디지털 자산 거래를",
+    adjectives: ["더 깔끔하게", "더 빠르게", "더 안전하게"],
+    body: "Kaliplay는 파편화된 디지털 공급을 통제된 유통 운영으로 전환합니다: 검증된 출처, 투명한 지역, 감사 가능한 인벤토리, 그리고 고객에게 바로 전달 가능한 제공."
+  },
+  footer: "마켓플레이스 유통을 위한 문서화된 디지털 인벤토리.",
+  home: {
+    missionLabel: "미션",
+    verified: "검증됨",
+    inventory: {
+      kicker: "디지털 인벤토리",
+      heading: "검증할 수 있는 인벤토리.",
+      body: "Kaliplay가 유통 가능한 인벤토리로 취급하기 전에, 모든 카테고리는 동일한 관리 절차를 거칩니다."
+    },
+    assets: {
+      KEY: { title: "PC·콘솔 게임 키", body: "Steam, Epic, EA, Ubisoft", detail: "PC 및 콘솔 플랫폼용 문서화된 게임 키로, 등록 전 인보이스 기반 출처, 지역 명확성, 교체 조건을 갖춥니다." },
+      DLC: { title: "DLC 및 확장팩", body: "추가 콘텐츠, 패스, 확장", detail: "다운로드 콘텐츠, 시즌 패스, 확장팩을 퍼블리셔·플랫폼·지역·권리 규칙에 따라 검토합니다." },
+      OS: { title: "소프트웨어 및 OS 라이선스", body: "Windows, Office, 도구", detail: "공급자 승인, 인보이스, 재판매 권리가 입증 가능한 경우에만 Windows, Office, 백신, Adobe, Corel, 디자인 도구를 제공합니다." },
+      GFT: { title: "기프트 카드 및 바우처", body: "PSN, Xbox, Nintendo, Razer", detail: "PlayStation, Xbox, Nintendo, Razer Gold, iTunes, Google Play 바우처를 출처·지역·사기 위험·사용 정책으로 관리합니다." },
+      SUB: { title: "구독 충전", body: "스트리밍, 게임, 클라우드", detail: "Netflix, Spotify, Discord Nitro, Amazon Prime, Game Pass 및 클라우드 업그레이드를 출처·지역·활성화 제약에 따라 검토합니다." },
+      COIN: { title: "게임 내 재화 및 아이템", body: "V-Bucks, Robux, 포인트", detail: "V-Bucks, Robux, COD 포인트, FIFA 포인트, 젬, 스킨, 이모트는 이전, 플랫폼 규칙, 전달이 명확한 경우에만 제공합니다." },
+      EVT: { title: "e스포츠 및 이벤트 입장", body: "티켓, 미트앤그리트", detail: "디지털 티켓, 가상 미트앤그리트, 이벤트 입장은 검증된 발행자 권리, 명확한 날짜 제약, 보장 가능한 전달이 필요합니다." },
+      ART: { title: "디지털 아트 및 수집품", body: "검증·추적 가능한 에디션", detail: "한정 디지털 아트와 NFT 연계 수집품은 출처, 권리, 에디션 한도, 블록체인 증명이 추적 가능한 경우에만 제공합니다." },
+      EDU: { title: "이러닝 및 전자책", body: "강의, 도서, 오디오북", detail: "Udemy, Coursera, MasterClass 바우처, DRM 없는 전자책, 오디오북, 라이선스 이전을 유통 전에 검토합니다." },
+      WEB: { title: "도메인 및 VPN 키", body: "도메인, VPN, 보안", detail: "양도 가능한 도메인과 VPN·보안 구독 키를 등록 전에 소유권 이전, 지역, 사용 조건에 대해 검증합니다." }
+    },
+    workflow: [
+      { kicker: "출처 접수", title: "문서화된 출처", body: "자본을 투입하기 전에 공급자 신원, 인보이스 경로, 소유권 증명, 교체 정책, 카테고리 위험을 기록합니다." },
+      { kicker: "검증 관문", title: "권리·지역·플랫폼 검토", body: "게시 전에 재판매 허가, 활성화 지역, 사용 제약, 사기 노출, 지원 위험을 확인합니다." },
+      { kicker: "통제된 출고", title: "유통 준비 완료 배치", body: "명확한 전달, 가격, 지원 메모, 감사 추적을 갖춘 추적 가능한 인벤토리만 구매자에게 이동할 수 있습니다." }
+    ]
+  },
+  form: {
+    title: "비즈니스에 대해 알려주세요.",
+    party: "참여자 유형",
+    email: "이메일",
+    emailPlaceholder: "name@company.com",
+    message: "메시지",
+    messagePlaceholder: "필요한 인벤토리, 접근, 파트너십 또는 검토 내용을 알려주세요.",
+    send: "보내기",
+    sending: "전송 중…",
+    success: "요청이 전송되었습니다. 곧 연락드리겠습니다.",
+    error: "문제가 발생했습니다. info@kaliplay.com 으로 이메일을 보내주세요.",
+    prepared: "요청이 준비되었습니다. 이메일 클라이언트가 열리면 info@kaliplay.com 으로 보내주세요.",
+    parties: ["공급자", "퍼블리셔", "마켓플레이스", "디지털 자산 파트너", "구매자", "기타"]
+  },
+  storeGate: {
+    badge: "스토어 로그인",
+    heading: "Kaliplay Store에 로그인하세요.",
+    registered: "이미 등록하셨나요?",
+    email: "이메일",
+    emailPlaceholder: "name@company.com",
+    password: "비밀번호",
+    passwordPlaceholder: "비밀번호",
+    invalid: "잘못된 자격 증명입니다.",
+    login: "로그인",
+    needAccess: "접근 권한이 필요하신가요?",
+    needAccessBody: "공급자, 마켓플레이스, 파트너 또는 구매자로 접근을 요청하세요.",
+    request: "접근 요청",
+    requestEyebrow: "접근 요청",
+    close: "닫기"
+  },
+  pages: {
+    store: { eyebrow: "스토어", title: "Kaliplay Store.", body: "로그인하거나 접근을 요청하세요.", bullets: [] },
+    about: {
+      eyebrow: "비전",
+      title: "디지털 자산 유통을 위한 신뢰 계층.",
+      body: "Kaliplay는 문서화된 디지털 상품을 위한 통제된 마켓플레이스를 운영합니다: 명확한 출처 기록, 검증된 권리, 투명한 활성화 규칙, 신뢰할 수 있는 전달 경로.",
+      bullets: ["게임을 넘어서: 소프트웨어, 바우처, 충전, 수집품, 강의, 도메인 및 기타 문서화된 디지털 자산.", "확장 이전에 추적 가능한 공급.", "스토어, 관리 시스템, 가격 인텔리전스 로드맵."]
+    },
+    compliance: {
+      eyebrow: "컴플라이언스",
+      title: "명확한 권리. 문서화된 공급. 통제된 전달.",
+      body: "모든 자산 카테고리는 문서화된 출처, 명확한 재판매 허가 또는 상업적 경로, 지역/플랫폼 명확성, 보장 가능한 전달을 갖춰야 합니다.",
+      bullets: ["인보이스 및 출처 확인.", "지역·플랫폼·권리 검증.", "구매 또는 게시 전 수동 검토."]
+    },
+    contact: {
+      eyebrow: "문의",
+      title: "문의하기.",
+      body: "공급자, 마켓플레이스, 퍼블리셔, 파트너, 구매자는 이 양식을 통해 인벤토리, 접근, 파트너십 또는 컴플라이언스 관련 문의를 할 수 있습니다.",
+      bullets: []
+    }
+  }
+};
+
+const ru: Translation = {
+  meta: {
+    title: "Kaliplay | Прослеживаемый цифровой инвентарь",
+    description: "Kaliplay закупает, проверяет и распространяет документированный цифровой инвентарь с правами, регионами, правилами платформ и прослеживаемой операционной деятельностью."
+  },
+  nav: { home: "Главная", store: "Магазин", about: "Видение", compliance: "Комплаенс", contact: "Контакты", terms: "Условия", privacy: "Конфиденциальность" },
+  hero: {
+    eyebrow: "Прослеживаемый цифровой инвентарь",
+    title: "Проверенные цифровые активы.",
+    body: "Мы закупаем, проверяем и распространяем прослеживаемый цифровой инвентарь",
+    primary: "Связаться с Kaliplay",
+    secondary: "Магазин",
+    store: ""
+  },
+  mission: {
+    lead: "Сделать торговлю цифровыми активами",
+    adjectives: ["Чище", "Быстрее", "Безопаснее"],
+    body: "Kaliplay превращает разрозненное цифровое предложение в управляемую операцию распространения: проверенные источники, прозрачные регионы, проверяемый инвентарь и готовую к выдаче клиенту поставку."
+  },
+  footer: "Документированный цифровой инвентарь для распространения на маркетплейсах.",
+  home: {
+    missionLabel: "Миссия",
+    verified: "Проверено",
+    inventory: {
+      kicker: "Цифровой инвентарь",
+      heading: "Инвентарь, который мы можем проверить.",
+      body: "Каждая категория проходит один и тот же путь контроля, прежде чем Kaliplay рассматривает её как инвентарь, пригодный для распространения."
+    },
+    assets: {
+      KEY: { title: "Ключи игр для ПК и консолей", body: "Steam, Epic, EA, Ubisoft", detail: "Документированные ключи игр для ПК и консолей: подтверждённое счётом происхождение, ясность по региону и условия замены до публикации." },
+      DLC: { title: "DLC и дополнения", body: "аддоны, пропуски, дополнения", detail: "Загружаемый контент, сезонные пропуски и дополнения, проверяемые по правилам издателя, платформы, региона и прав." },
+      OS: { title: "ПО и лицензии ОС", body: "Windows, Office, инструменты", detail: "Windows, Office, антивирусы, Adobe, Corel и дизайн-инструменты — только при подтверждаемых авторизации поставщика, счетах и правах перепродажи." },
+      GFT: { title: "Подарочные карты и ваучеры", body: "PSN, Xbox, Nintendo, Razer", detail: "Ваучеры PlayStation, Xbox, Nintendo, Razer Gold, iTunes и Google Play с контролем источника, региона, риска мошенничества и политики погашения." },
+      SUB: { title: "Пополнение подписок", body: "стриминг, гейминг, облако", detail: "Netflix, Spotify, Discord Nitro, Amazon Prime, Game Pass и облачные апгрейды, проверяемые по источнику, территории и ограничениям активации." },
+      COIN: { title: "Внутриигровая валюта и товары", body: "V-Bucks, Robux, очки", detail: "V-Bucks, Robux, COD Points, FIFA Points, гемы, скины и эмоции — только когда передача, правила платформы и доставка явно определены." },
+      EVT: { title: "Киберспорт и доступ на события", body: "билеты, встречи", detail: "Цифровые билеты, виртуальные встречи и доступ на события требуют проверенных прав организатора, чётких ограничений по датам и подтверждаемой выдачи." },
+      ART: { title: "Цифровое искусство и коллекционные предметы", body: "проверенные, прослеживаемые издания", detail: "Лимитированное цифровое искусство и связанные с NFT коллекционные предметы — только когда происхождение, права, лимиты издания и блокчейн-подтверждение прослеживаемы." },
+      EDU: { title: "Онлайн-обучение и электронные книги", body: "курсы, книги, аудиокниги", detail: "Ваучеры Udemy, Coursera, MasterClass, электронные книги без DRM, аудиокниги и передача лицензий, проверяемые до распространения." },
+      WEB: { title: "Домены и ключи VPN", body: "домены, VPN, безопасность", detail: "Передаваемые доменные имена, а также ключи VPN и подписок безопасности, проверенные на передачу прав, регион и погашение до публикации." }
+    },
+    workflow: [
+      { kicker: "Приём источников", title: "Документированное происхождение", body: "Личность поставщика, путь счёта, подтверждение прав собственности, политика замены и риск категории фиксируются до вложения капитала." },
+      { kicker: "Контроль проверки", title: "Проверка прав, региона и платформы", body: "Разрешение на перепродажу, территория активации, ограничения погашения, риск мошенничества и риск поддержки проверяются до публикации." },
+      { kicker: "Контролируемый выпуск", title: "Партия, готовая к распространению", body: "Только прослеживаемый инвентарь с чёткой доставкой, ценой, заметками поддержки и аудиторским следом может двигаться к покупателям." }
+    ]
+  },
+  form: {
+    title: "Расскажите о вашей компании.",
+    party: "Тип стороны",
+    email: "Эл. почта",
+    emailPlaceholder: "name@company.com",
+    message: "Сообщение",
+    messagePlaceholder: "Расскажите, какой инвентарь, доступ, партнёрство или проверка вам нужны.",
+    send: "Отправить",
+    sending: "Отправка…",
+    success: "Запрос отправлен. Мы скоро свяжемся с вами.",
+    error: "Что-то пошло не так. Напишите нам на info@kaliplay.com.",
+    prepared: "Запрос подготовлен. Ваш почтовый клиент должен открыться, чтобы отправить его на info@kaliplay.com.",
+    parties: ["Поставщик", "Издатель", "Маркетплейс", "Партнёр по цифровым активам", "Покупатель", "Другое"]
+  },
+  storeGate: {
+    badge: "Вход в магазин",
+    heading: "Войдите в Kaliplay Store.",
+    registered: "Уже зарегистрированы?",
+    email: "Эл. почта",
+    emailPlaceholder: "name@company.com",
+    password: "Пароль",
+    passwordPlaceholder: "Пароль",
+    invalid: "Неверные учётные данные.",
+    login: "Войти",
+    needAccess: "Нужен доступ?",
+    needAccessBody: "Запросите доступ как поставщик, маркетплейс, партнёр или покупатель.",
+    request: "Запросить доступ",
+    requestEyebrow: "Запросить доступ",
+    close: "Закрыть"
+  },
+  pages: {
+    store: { eyebrow: "Магазин", title: "Kaliplay Store.", body: "Войдите или запросите доступ.", bullets: [] },
+    about: {
+      eyebrow: "Видение",
+      title: "Доверенный слой для распространения цифровых активов.",
+      body: "Kaliplay управляет контролируемым маркетплейсом для документированных цифровых товаров: ясные записи об источнике, проверенные права, прозрачные правила активации и надёжные пути доставки.",
+      bullets: ["Больше, чем игры: ПО, ваучеры, пополнения, коллекционные предметы, курсы, домены и другие документированные цифровые активы.", "Прослеживаемое предложение до масштабирования.", "Дорожная карта: витрина, система администрирования и ценовая аналитика."]
+    },
+    compliance: {
+      eyebrow: "Комплаенс",
+      title: "Ясные права. Документированное предложение. Контролируемая доставка.",
+      body: "Каждая категория активов должна иметь документированный источник, ясное разрешение на перепродажу или коммерческий путь, ясность по региону/платформе и подтверждаемую доставку.",
+      bullets: ["Проверки счёта и происхождения.", "Проверка региона, платформы и прав.", "Ручная проверка перед покупкой или публикацией."]
+    },
+    contact: {
+      eyebrow: "Контакты",
+      title: "Свяжитесь с нами.",
+      body: "Поставщики, маркетплейсы, издатели, партнёры и покупатели могут использовать эту форму для вопросов об инвентаре, доступе, партнёрстве или комплаенсе.",
+      bullets: []
+    }
+  }
+};
+
+const translations: Record<Exclude<Locale, "en">, Translation> = { es, pt, fr, zh, ko, ru };
 
 function merge(locale: Locale): HomeCopy {
   if (locale === "en") return en;
