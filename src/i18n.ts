@@ -109,8 +109,8 @@ export type HomeCopy = {
 
 const en: HomeCopy = {
   meta: {
-    title: "Kaliplay | Traceable digital inventory",
-    description: "Kaliplay procures, validates, and distributes documented digital inventory with clear rights, regions, platform rules, and operational traceability."
+    title: "Kaliplay | Verified digital goods supplier for resellers",
+    description: "Verified supplier of documented digital inventory — game keys, software licenses, gift cards and top-ups — with clear resale rights, regions and platform rules for resellers and marketplaces."
   },
   nav: {
     home: "Home",
@@ -335,8 +335,8 @@ type Translation = Partial<Omit<HomeCopy, "pages">> & { pages?: Partial<HomeCopy
 
 const es: Translation = {
   meta: {
-    title: "Kaliplay | Inventario digital trazable",
-    description: "Kaliplay procura, valida y distribuye inventario digital documentado con derechos, regiones, reglas de plataforma y operación trazable."
+    title: "Kaliplay | Bienes digitales verificados para revendedores",
+    description: "Proveedor verificado de inventario digital documentado — claves de juego, licencias de software, tarjetas regalo y recargas — con derechos de reventa, regiones y reglas de plataforma claras para revendedores y marketplaces."
   },
   nav: { home: "Inicio", store: "Tienda", about: "Visión", compliance: "Cumplimiento", contact: "Contacto", terms: "Términos", privacy: "Privacidad" },
   hero: {
@@ -434,8 +434,8 @@ const es: Translation = {
 
 const pt: Translation = {
   meta: {
-    title: "Kaliplay | Inventário digital rastreável",
-    description: "A Kaliplay adquire, valida e distribui inventário digital documentado com direitos, regiões, regras de plataforma e rastreabilidade operacional."
+    title: "Kaliplay | Bens digitais verificados para revendedores",
+    description: "Fornecedor verificado de inventário digital documentado — chaves de jogos, licenças de software, gift cards e recargas — com direitos de revenda, regiões e regras de plataforma claras para revendedores e marketplaces."
   },
   nav: { home: "Início", store: "Loja", about: "Visão", compliance: "Conformidade", contact: "Contato", terms: "Termos", privacy: "Privacidade" },
   hero: {

@@ -3,6 +3,9 @@ import { hreflang, locales, pageSlugs } from "@/i18n";
 
 const base = "https://kaliplay.com";
 
+// Login gate with no crawlable content — excluded from the sitemap (also noindex'd).
+const indexableSlugs = pageSlugs.filter((slug) => slug !== "store");
+
 function altLanguages(path: string) {
   return {
     languages: {
@@ -23,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: locale === "en" ? 1 : 0.8,
       alternates: altLanguages("")
     },
-    ...pageSlugs.map((slug) => ({
+    ...indexableSlugs.map((slug) => ({
       url: `${base}/${locale}/${slug}`,
       lastModified: today,
       changeFrequency: "monthly" as const,

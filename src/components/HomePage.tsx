@@ -57,10 +57,10 @@ export function HomePage({ locale, copy }: HomePageProps) {
         <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl items-center justify-center text-center">
           <div className="hero-copy-panel reveal relative z-10 mx-auto max-w-6xl">
             <BrandLogo variant="lockupVertical" className="hero-lockup mx-auto mb-6 h-60 w-52 sm:h-72 sm:w-64 lg:h-80 lg:w-72" priority />
-            <h1 className="sr-only">Kaliplay</h1>
-            <h2 className="mx-auto mt-4 max-w-5xl text-5xl font-semibold leading-[0.9] tracking-[-0.06em] text-bone sm:text-7xl lg:text-8xl">
+            <h1 className="mx-auto mt-4 max-w-5xl text-5xl font-semibold leading-[0.9] tracking-[-0.06em] text-bone sm:text-7xl lg:text-8xl">
               {copy.hero.title}
-            </h2>
+              <span className="sr-only"> — Kaliplay: {copy.hero.eyebrow}</span>
+            </h1>
             <p className="mx-auto mt-6 max-w-3xl text-xl font-medium leading-8 text-bone/92 sm:text-2xl">{copy.hero.body}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link

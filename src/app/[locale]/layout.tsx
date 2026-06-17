@@ -61,10 +61,41 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
 export default async function LocaleLayout({ children, params }: LayoutProps) {
   const resolved = await params;
   const locale: Locale = isLocale(resolved.locale) ? resolved.locale : "en";
+  const text = getCopy(locale);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://kaliplay.com/#organization",
+        name: "Kaliplay",
+        url: "https://kaliplay.com",
+        logo: "https://kaliplay.com/brand/favicon-512.png",
+        description: text.meta.description,
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "info@kaliplay.com",
+          contactType: "sales",
+          availableLanguage: locales.map((l) => hreflang[l])
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://kaliplay.com/#website",
+        url: "https://kaliplay.com",
+        name: "Kaliplay",
+        description: text.meta.description,
+        inLanguage: hreflang[locale],
+        publisher: { "@id": "https://kaliplay.com/#organization" }
+      }
+    ]
+  };
 
   return (
     <html lang={hreflang[locale]} dir={dir(locale)}>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <div className="noise" />
         <div className="scanline" />
         {children}
